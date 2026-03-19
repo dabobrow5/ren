@@ -24,7 +24,7 @@
     background: var(--cream);
     font-family: 'Cormorant Garamond', serif;
     color: var(--dark);
-    width: 1100px;
+    max-width: 1100px;
     margin: 0 auto;
     padding: 48px 48px 40px;
   }
@@ -34,6 +34,7 @@
     text-align: center;
     margin-bottom: 32px;
     position: relative;
+    animation: fadeUp 0.6s ease forwards;
   }
 
   .header::after {
@@ -75,13 +76,13 @@
   .main {
     display: grid;
     grid-template-columns: 1fr 340px 1fr;
-    grid-template-rows: auto auto auto;
+    grid-template-rows: auto;
     gap: 20px;
     align-items: start;
     margin-bottom: 24px;
   }
 
-  /* LEFT COLUMN - pillars 1, 2, 3 */
+  /* LEFT COLUMN */
   .left-pillars {
     display: flex;
     flex-direction: column;
@@ -89,7 +90,7 @@
     padding-top: 30px;
   }
 
-  /* RIGHT COLUMN - pillars 4, 5, 6 */
+  /* RIGHT COLUMN */
   .right-pillars {
     display: flex;
     flex-direction: column;
@@ -103,7 +104,7 @@
     padding: 14px 16px;
     background: white;
     position: relative;
-    transition: all 0.3s ease;
+    animation: fadeUp 0.6s ease forwards;
   }
 
   .pillar::before {
@@ -160,7 +161,6 @@
     border-radius: 4px;
     padding: 7px 10px;
     text-align: center;
-    position: relative;
   }
 
   .maslow-level .m-label {
@@ -205,7 +205,7 @@
     padding: 20px 16px;
     text-align: center;
     position: relative;
-    margin-bottom: 0;
+    animation: fadeUp 0.5s ease 0.2s both;
   }
 
   .core::before {
@@ -261,7 +261,7 @@
     letter-spacing: 0.5px;
   }
 
-  /* CONNECTOR LINES */
+  /* CONNECTOR */
   .connector {
     display: flex;
     align-items: center;
@@ -289,7 +289,7 @@
     padding: 14px 16px;
     background: var(--warm);
     text-align: center;
-    margin-bottom: 0;
+    animation: fadeUp 0.5s ease 0.3s both;
   }
 
   .person-node .p-label {
@@ -434,11 +434,137 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  .header { animation: fadeUp 0.6s ease forwards; }
-  .pillar { animation: fadeUp 0.6s ease forwards; }
   .pillar:nth-child(2) { animation-delay: 0.1s; }
-  .core { animation: fadeUp 0.5s ease 0.2s both; }
-  .person-node { animation: fadeUp 0.5s ease 0.3s both; }
+
+  /* =====================
+     RESPONSIVE BREAKPOINTS
+     ===================== */
+
+  /* TABLET — 768px to 1099px */
+  @media (max-width: 1099px) {
+    body {
+      padding: 36px 32px 32px;
+    }
+
+    .header h1 {
+      font-size: 56px;
+      letter-spacing: 14px;
+    }
+
+    .main {
+      grid-template-columns: 1fr 280px 1fr;
+      gap: 16px;
+    }
+
+    .bottom-strip {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* MOBILE — up to 767px */
+  @media (max-width: 767px) {
+    body {
+      padding: 28px 20px 28px;
+    }
+
+    .header .eyebrow {
+      font-size: 8px;
+      letter-spacing: 2px;
+    }
+
+    .header h1 {
+      font-size: 48px;
+      letter-spacing: 12px;
+    }
+
+    .header .tagline {
+      font-size: 15px;
+    }
+
+    .quote-strip p {
+      font-size: 13px;
+    }
+
+    /* Stack the 3-column layout vertically */
+    .main {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+      gap: 12px;
+    }
+
+    .left-pillars,
+    .right-pillars {
+      padding-top: 0;
+      gap: 12px;
+    }
+
+    /* Center column sits between left and right on mobile */
+    .center {
+      order: -1;
+      margin-bottom: 4px;
+    }
+
+    .maslow-level .m-label {
+      font-size: 9px;
+    }
+
+    .maslow-level .m-desc {
+      font-size: 10px;
+    }
+
+    .core .core-name {
+      font-size: 32px;
+      letter-spacing: 8px;
+    }
+
+    .core .core-mission {
+      font-size: 12px;
+    }
+
+    .pillar .pillar-name {
+      font-size: 13px;
+    }
+
+    .pillar .pillar-desc {
+      font-size: 12px;
+    }
+
+    .bottom-strip {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .stat-card .stat-num {
+      font-size: 22px;
+    }
+
+    .footer {
+      flex-direction: column;
+      gap: 10px;
+      text-align: center;
+    }
+
+    .footer .f-right {
+      text-align: center;
+    }
+  }
+
+  /* SMALL MOBILE — up to 400px */
+  @media (max-width: 400px) {
+    .header h1 {
+      font-size: 38px;
+      letter-spacing: 8px;
+    }
+
+    .bottom-strip {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .header .eyebrow {
+      font-size: 7px;
+      letter-spacing: 1.5px;
+    }
+  }
 </style>
 </head>
 <body>
@@ -459,29 +585,8 @@
 <!-- MAIN DIAGRAM -->
 <div class="main">
 
-  <!-- LEFT PILLARS -->
-  <div class="left-pillars">
-    <div class="pillar">
-      <div class="pillar-num">01 &nbsp;—&nbsp; RELATIONAL AI COMPANION</div>
-      <div class="pillar-name">Ren Meets You Where You Are</div>
-      <div class="pillar-desc">Safety communicated before anything else. Full choice returned always. Trust that deepens from gentle guidance into true partnership over time.</div>
-    </div>
-    <div class="pillar">
-      <div class="pillar-num">02 &nbsp;—&nbsp; SOUND AND FREQUENCY HEALING</div>
-      <div class="pillar-name">The Body Heals What Words Cannot</div>
-      <div class="pillar-desc">Hz-specific frequencies selected in real time based on each person's detected nervous system state. Somatic regulation, delivered with precision and warmth.</div>
-    </div>
-    <div class="pillar">
-      <div class="pillar-num">03 &nbsp;—&nbsp; PERSONALIZED GUIDED MEDITATION</div>
-      <div class="pillar-name">Made for You, in This Moment</div>
-      <div class="pillar-desc">Ren crafts guided meditations custom tailored to each person's history, current state, and unique journey. Not a playlist. A companion sitting with you, creating exactly what you need.</div>
-    </div>
-  </div>
-
-  <!-- CENTER -->
+  <!-- CENTER (first on mobile) -->
   <div class="center">
-
-    <!-- MASLOW TOWER -->
     <div class="maslow">
       <div class="maslow-level m5">
         <div class="m-label">Self-Actualization</div>
@@ -505,7 +610,6 @@
       </div>
     </div>
 
-    <!-- CORE -->
     <div class="core">
       <div class="core-eyebrow">Conscious Companion Core</div>
       <div class="core-name">Ren</div>
@@ -520,19 +624,35 @@
 
     <div class="connector"></div>
 
-    <!-- PERSON -->
     <div class="person-node">
       <div class="p-label">The Person</div>
       <div class="p-name">Every Human Being</div>
       <div class="p-desc">Wherever they are. Whatever they carry.<br>Regardless of geography or economic status.</div>
     </div>
 
-    <!-- PROFESSIONAL LAYER -->
     <div class="pro-layer">
       <div class="pro-label">Human-in-the-Loop Professional Care</div>
       <div class="pro-desc">Licensed professionals integrated at critical moments. Ren prepares, flags, supports. The professional decides. Compassion preserved through every transition.</div>
     </div>
+  </div>
 
+  <!-- LEFT PILLARS -->
+  <div class="left-pillars">
+    <div class="pillar">
+      <div class="pillar-num">01 &nbsp;—&nbsp; RELATIONAL AI COMPANION</div>
+      <div class="pillar-name">Ren Meets You Where You Are</div>
+      <div class="pillar-desc">Safety communicated before anything else. Full choice returned always. Trust that deepens from gentle guidance into true partnership over time.</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">02 &nbsp;—&nbsp; SOUND AND FREQUENCY HEALING</div>
+      <div class="pillar-name">The Body Heals What Words Cannot</div>
+      <div class="pillar-desc">Hz-specific frequencies selected in real time based on each person's detected nervous system state. Somatic regulation, delivered with precision and warmth.</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">03 &nbsp;—&nbsp; PERSONALIZED GUIDED MEDITATION</div>
+      <div class="pillar-name">Made for You, in This Moment</div>
+      <div class="pillar-desc">Ren crafts guided meditations custom tailored to each person's history, current state, and unique journey. Not a playlist. A companion sitting with you, creating exactly what you need.</div>
+    </div>
   </div>
 
   <!-- RIGHT PILLARS -->
