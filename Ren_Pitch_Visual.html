@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ren — The Vision</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Courier+Prime:wght@400;700&display=swap');
+
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8D5A3;
+    --gold-dim: rgba(201,168,76,0.15);
+    --dark: #1A1A2E;
+    --dark-mid: #2A2A42;
+    --mid: #4A4A5A;
+    --cream: #FDFAF5;
+    --warm: #FFF9EE;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--dark);
+    width: 1100px;
+    margin: 0 auto;
+    padding: 48px 48px 40px;
+  }
+
+  /* HEADER */
+  .header {
+    text-align: center;
+    margin-bottom: 32px;
+    position: relative;
+  }
+
+  .header::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 2px;
+    background: var(--gold);
+    margin: 16px auto 0;
+  }
+
+  .header .eyebrow {
+    font-family: 'Courier Prime', monospace;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .header h1 {
+    font-size: 72px;
+    font-weight: 300;
+    letter-spacing: 20px;
+    color: var(--dark);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .header .tagline {
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--gold);
+    letter-spacing: 1px;
+  }
+
+  /* MAIN LAYOUT */
+  .main {
+    display: grid;
+    grid-template-columns: 1fr 340px 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 20px;
+    align-items: start;
+    margin-bottom: 24px;
+  }
+
+  /* LEFT COLUMN - pillars 1, 2, 3 */
+  .left-pillars {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding-top: 30px;
+  }
+
+  /* RIGHT COLUMN - pillars 4, 5, 6 */
+  .right-pillars {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding-top: 30px;
+  }
+
+  .pillar {
+    border: 1px solid var(--gold);
+    border-radius: 8px;
+    padding: 14px 16px;
+    background: white;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .pillar::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--gold);
+    border-radius: 8px 0 0 8px;
+  }
+
+  .pillar .pillar-num {
+    font-family: 'Courier Prime', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+
+  .pillar .pillar-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 6px;
+    line-height: 1.2;
+  }
+
+  .pillar .pillar-desc {
+    font-size: 11.5px;
+    font-style: italic;
+    color: var(--mid);
+    line-height: 1.5;
+  }
+
+  /* CENTER COLUMN */
+  .center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  /* MASLOW TOWER */
+  .maslow {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-bottom: 16px;
+  }
+
+  .maslow-level {
+    border-radius: 4px;
+    padding: 7px 10px;
+    text-align: center;
+    position: relative;
+  }
+
+  .maslow-level .m-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 8px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .maslow-level .m-desc {
+    font-size: 10px;
+    font-style: italic;
+    margin-top: 1px;
+  }
+
+  .m5 { background: var(--dark); }
+  .m5 .m-label { color: var(--gold); }
+  .m5 .m-desc { color: rgba(201,168,76,0.7); }
+
+  .m4 { background: var(--dark-mid); }
+  .m4 .m-label { color: var(--gold-light); }
+  .m4 .m-desc { color: rgba(232,213,163,0.6); }
+
+  .m3 { background: #3A3A5A; }
+  .m3 .m-label { color: var(--gold-light); }
+  .m3 .m-desc { color: rgba(232,213,163,0.55); }
+
+  .m2 { background: #4A4A6A; }
+  .m2 .m-label { color: var(--gold-light); }
+  .m2 .m-desc { color: rgba(232,213,163,0.5); }
+
+  .m1 { background: #5A5A7A; }
+  .m1 .m-label { color: var(--gold-light); }
+  .m1 .m-desc { color: rgba(232,213,163,0.45); }
+
+  /* CENTER CORE */
+  .core {
+    width: 100%;
+    background: var(--dark);
+    border: 2px solid var(--gold);
+    border-radius: 12px;
+    padding: 20px 16px;
+    text-align: center;
+    position: relative;
+    margin-bottom: 0;
+  }
+
+  .core::before {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 9px;
+    pointer-events: none;
+  }
+
+  .core .core-eyebrow {
+    font-family: 'Courier Prime', monospace;
+    font-size: 8px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .core .core-name {
+    font-size: 40px;
+    font-weight: 300;
+    letter-spacing: 10px;
+    color: white;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+
+  .core .core-mission {
+    font-size: 11px;
+    font-style: italic;
+    color: rgba(201,168,76,0.8);
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+
+  .core-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
+  }
+
+  .core-tag {
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 20px;
+    padding: 3px 9px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 8px;
+    color: var(--gold);
+    letter-spacing: 0.5px;
+  }
+
+  /* CONNECTOR LINES */
+  .connector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20px;
+    position: relative;
+    width: 100%;
+  }
+
+  .connector::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+  }
+
+  /* PERSON */
+  .person-node {
+    width: 100%;
+    border: 1px solid rgba(201,168,76,0.4);
+    border-radius: 8px;
+    padding: 14px 16px;
+    background: var(--warm);
+    text-align: center;
+    margin-bottom: 0;
+  }
+
+  .person-node .p-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 8px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .person-node .p-name {
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--dark);
+    margin-bottom: 4px;
+    letter-spacing: 2px;
+  }
+
+  .person-node .p-desc {
+    font-size: 10px;
+    font-style: italic;
+    color: var(--mid);
+    line-height: 1.4;
+  }
+
+  /* PROFESSIONAL LAYER */
+  .pro-layer {
+    width: 100%;
+    border: 1px dashed var(--gold);
+    border-radius: 8px;
+    padding: 12px 16px;
+    background: rgba(201,168,76,0.05);
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .pro-layer .pro-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 8px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .pro-layer .pro-desc {
+    font-size: 11px;
+    font-style: italic;
+    color: var(--mid);
+    line-height: 1.4;
+  }
+
+  /* BOTTOM STRIP */
+  .bottom-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .stat-card {
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 6px;
+    padding: 12px 14px;
+    background: white;
+    text-align: center;
+  }
+
+  .stat-card .stat-num {
+    font-size: 26px;
+    font-weight: 300;
+    color: var(--gold);
+    letter-spacing: 2px;
+    margin-bottom: 2px;
+  }
+
+  .stat-card .stat-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 8px;
+    letter-spacing: 1px;
+    color: var(--mid);
+    text-transform: uppercase;
+    line-height: 1.3;
+  }
+
+  /* QUOTE */
+  .quote-strip {
+    border-top: 1px solid rgba(201,168,76,0.3);
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+    padding: 14px 0;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .quote-strip p {
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--dark);
+    letter-spacing: 0.5px;
+  }
+
+  .quote-strip .attr {
+    font-family: 'Courier Prime', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-top: 6px;
+    text-transform: uppercase;
+  }
+
+  /* FOOTER */
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1.5px solid var(--gold);
+    padding-top: 12px;
+  }
+
+  .footer .f-left {
+    font-family: 'Courier Prime', monospace;
+    font-size: 9px;
+    letter-spacing: 1px;
+    color: var(--gold);
+    line-height: 1.6;
+  }
+
+  .footer .f-right {
+    font-family: 'Courier Prime', monospace;
+    font-size: 9px;
+    letter-spacing: 1px;
+    color: var(--mid);
+    text-align: right;
+    line-height: 1.6;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .header { animation: fadeUp 0.6s ease forwards; }
+  .pillar { animation: fadeUp 0.6s ease forwards; }
+  .pillar:nth-child(2) { animation-delay: 0.1s; }
+  .core { animation: fadeUp 0.5s ease 0.2s both; }
+  .person-node { animation: fadeUp 0.5s ease 0.3s both; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="eyebrow">Light Alchemy Ventures &nbsp;·&nbsp; Patent Pending #64/009,471</div>
+  <h1>REN</h1>
+  <div class="tagline">A New Category of Care</div>
+</div>
+
+<!-- QUOTE -->
+<div class="quote-strip">
+  <p>"To be seen, accepted, supported, and loved, for exactly who you are, is not a feature. It is an inalienable right."</p>
+  <div class="attr">The Mission Behind Ren</div>
+</div>
+
+<!-- MAIN DIAGRAM -->
+<div class="main">
+
+  <!-- LEFT PILLARS -->
+  <div class="left-pillars">
+    <div class="pillar">
+      <div class="pillar-num">01 &nbsp;—&nbsp; RELATIONAL AI COMPANION</div>
+      <div class="pillar-name">Ren Meets You Where You Are</div>
+      <div class="pillar-desc">Safety communicated before anything else. Full choice returned always. Trust that deepens from gentle guidance into true partnership over time.</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">02 &nbsp;—&nbsp; SOUND AND FREQUENCY HEALING</div>
+      <div class="pillar-name">The Body Heals What Words Cannot</div>
+      <div class="pillar-desc">Hz-specific frequencies selected in real time based on each person's detected nervous system state. Somatic regulation, delivered with precision and warmth.</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">03 &nbsp;—&nbsp; PERSONALIZED GUIDED MEDITATION</div>
+      <div class="pillar-name">Made for You, in This Moment</div>
+      <div class="pillar-desc">Ren crafts guided meditations custom tailored to each person's history, current state, and unique journey. Not a playlist. A companion sitting with you, creating exactly what you need.</div>
+    </div>
+  </div>
+
+  <!-- CENTER -->
+  <div class="center">
+
+    <!-- MASLOW TOWER -->
+    <div class="maslow">
+      <div class="maslow-level m5">
+        <div class="m-label">Self-Actualization</div>
+        <div class="m-desc">Fullest expression of self</div>
+      </div>
+      <div class="maslow-level m4">
+        <div class="m-label">Esteem</div>
+        <div class="m-desc">Self-love, confidence, autonomy</div>
+      </div>
+      <div class="maslow-level m3">
+        <div class="m-label">Love and Belonging</div>
+        <div class="m-desc">Self first, then community</div>
+      </div>
+      <div class="maslow-level m2">
+        <div class="m-label">Safety</div>
+        <div class="m-desc">Ren's entry point, always</div>
+      </div>
+      <div class="maslow-level m1">
+        <div class="m-label">Physiological</div>
+        <div class="m-desc">Biometric monitoring and regulation</div>
+      </div>
+    </div>
+
+    <!-- CORE -->
+    <div class="core">
+      <div class="core-eyebrow">Conscious Companion Core</div>
+      <div class="core-name">Ren</div>
+      <div class="core-mission">Listens. Remembers. Meets. Walks alongside.<br>Never abandons. Always returns choice.<br><em style="color:rgba(201,168,76,1);">Reflects your worth back to you, until you see it yourself.</em></div>
+      <div class="core-tags">
+        <span class="core-tag">Immutable Values</span>
+        <span class="core-tag">Safety First</span>
+        <span class="core-tag">Trust Calibration</span>
+        <span class="core-tag">Predictive Modeling</span>
+      </div>
+    </div>
+
+    <div class="connector"></div>
+
+    <!-- PERSON -->
+    <div class="person-node">
+      <div class="p-label">The Person</div>
+      <div class="p-name">Every Human Being</div>
+      <div class="p-desc">Wherever they are. Whatever they carry.<br>Regardless of geography or economic status.</div>
+    </div>
+
+    <!-- PROFESSIONAL LAYER -->
+    <div class="pro-layer">
+      <div class="pro-label">Human-in-the-Loop Professional Care</div>
+      <div class="pro-desc">Licensed professionals integrated at critical moments. Ren prepares, flags, supports. The professional decides. Compassion preserved through every transition.</div>
+    </div>
+
+  </div>
+
+  <!-- RIGHT PILLARS -->
+  <div class="right-pillars">
+    <div class="pillar">
+      <div class="pillar-num">04 &nbsp;—&nbsp; HABIT TRACKING AND PROGRESS CELEBRATION</div>
+      <div class="pillar-name">Ren Walks With You Between Sessions</div>
+      <div class="pillar-desc">Goal setting, daily habit guidance, and behavioral analytics powered by longitudinal memory. Ren remembers your progress and celebrates every step, bridging belonging into genuine self-esteem.</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">05 &nbsp;—&nbsp; MASLOW-GUIDED PROGRESSION</div>
+      <div class="pillar-name">A Journey Toward the Fullest Self</div>
+      <div class="pillar-desc">From physiological safety through complete self-actualization. Interventions sequenced intentionally, meeting each person exactly at their current stage of growth.</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">06 &nbsp;—&nbsp; PREDICTIVE AND PROACTIVE CARE</div>
+      <div class="pillar-name">Ren Reaches Before You Call</div>
+      <div class="pillar-desc">Biometric data and behavioral patterns analyzed continuously. Ren initiates compassion-forward outreach before need is articulated. Care that anticipates, not just responds.</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- STATS STRIP -->
+<div class="bottom-strip">
+  <div class="stat-card">
+    <div class="stat-num">18</div>
+    <div class="stat-label">Patented System Components</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num">1B+</div>
+    <div class="stat-label">People Living With Mental Health Challenges Globally</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num">0</div>
+    <div class="stat-label">Platforms That Deliver All Six Pillars Today</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num">∞</div>
+    <div class="stat-label">Lives Ren Is Built to Reach</div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="f-left">
+    LIGHT ALCHEMY VENTURES<br>
+    Dave Bobrowski, Founder<br>
+    Patent Pending #64/009,471 &nbsp;·&nbsp; March 18, 2026
+  </div>
+  <div class="f-right">
+    Conscious. Courageous. Luminous.<br>
+    One light. For the good of all.
+  </div>
+</div>
+
+</body>
+</html>
