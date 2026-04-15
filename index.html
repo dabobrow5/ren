@@ -3,711 +3,1003 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ren — The Vision</title>
+<title>Ren by Light Alchemy — A New Category of Care</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Cormorant:ital,wght@1,300&display=swap" rel="stylesheet">
+
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Courier+Prime:wght@400;700&display=swap');
+:root {
+  --navy:        #0D1B2E;
+  --navy-mid:    #1A3A5C;
+  --navy-light:  #1E3D5A;
+  --teal:        #2A7D7B;
+  --teal-light:  #4AADAB;
+  --teal-glow:   rgba(42,125,123,0.18);
+  --gold:        #C9A84C;
+  --gold-light:  #E8C97A;
+  --gold-glow:   rgba(201,168,76,0.15);
+  --white:       #FFFFFF;
+  --cream:       #F5F0E8;
+  --text-main:   rgba(255,255,255,0.92);
+  --text-muted:  rgba(255,255,255,0.52);
+  --text-dim:    rgba(255,255,255,0.32);
+  --border:      rgba(255,255,255,0.08);
+  --border-teal: rgba(42,125,123,0.35);
+  --border-gold: rgba(201,168,76,0.35);
+}
 
-  :root {
-    --gold: #C9A84C;
-    --gold-light: #E8D5A3;
-    --gold-dim: rgba(201,168,76,0.15);
-    --dark: #1A1A2E;
-    --dark-mid: #2A2A42;
-    --mid: #4A4A5A;
-    --cream: #FDFAF5;
-    --warm: #FFF9EE;
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--navy);
+  color: var(--text-main);
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NOISE TEXTURE OVERLAY ─────────────────────────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+/* ── ANIMATIONS ─────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+@keyframes journeyLine {
+  from { stroke-dashoffset: 400; }
+  to   { stroke-dashoffset: 0; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── LAYOUT ─────────────────────────────────────────────────── */
+.page-wrap {
+  position: relative;
+  z-index: 1;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+section { padding: 6rem 0; }
+
+.section-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--teal-light);
+  margin-bottom: 1rem;
+}
+
+/* ── HEADER / HERO ──────────────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  padding: 8rem 2rem 6rem;
+}
+
+.hero-eyebrow {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 2.5rem;
+  animation: fadeIn 1.2s ease forwards;
+}
+
+.hero-wordmark {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(6rem, 18vw, 13rem);
+  font-weight: 300;
+  letter-spacing: .12em;
+  line-height: 1;
+  color: var(--white);
+  animation: fadeUp 1s ease 0.2s both;
+  position: relative;
+  display: inline-block;
+}
+
+.hero-wordmark::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--teal), transparent);
+}
+
+.hero-category {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.1rem, 3vw, 1.6rem);
+  font-weight: 300;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--teal-light);
+  margin-top: 2rem;
+  animation: fadeUp 1s ease 0.4s both;
+}
+
+.hero-quote {
+  max-width: 640px;
+  margin: 3.5rem auto 0;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.75);
+  animation: fadeUp 1s ease 0.6s both;
+}
+
+.hero-quote cite {
+  display: block;
+  font-style: normal;
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 1rem;
+}
+
+.hero-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60vw;
+  height: 60vw;
+  max-width: 700px;
+  max-height: 700px;
+  background: radial-gradient(circle, rgba(42,125,123,0.08) 0%, transparent 70%);
+  pointer-events: none;
+  animation: glowPulse 6s ease-in-out infinite;
+}
+
+/* ── MASLOW SECTION ─────────────────────────────────────────── */
+.maslow-section {
+  padding: 6rem 0 4rem;
+}
+
+.maslow-intro {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 4rem;
+}
+
+.maslow-intro h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 300;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.maslow-intro p {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.maslow-grid {
+  display: grid;
+  grid-template-columns: 1fr 260px 1fr;
+  gap: 0 3rem;
+  align-items: center;
+}
+
+/* LEFT — Hierarchy rungs */
+.maslow-rungs {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+}
+
+.rung {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.02);
+  transition: border-color .3s, background .3s;
+  cursor: default;
+}
+
+.rung:hover {
+  border-color: var(--border-teal);
+  background: rgba(42,125,123,0.06);
+}
+
+.rung-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: var(--teal);
+}
+
+.rung.gold .rung-dot { background: var(--gold); }
+.rung.dim  .rung-dot { background: var(--text-dim); }
+
+.rung-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-main);
+  line-height: 1.2;
+}
+
+.rung-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* CENTER — Ren orb */
+.maslow-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.ren-orb {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 1px solid var(--border-teal);
+  background: radial-gradient(circle at 40% 40%, rgba(42,125,123,0.25), rgba(13,27,46,0.8) 70%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  animation: float 5s ease-in-out infinite;
+}
+
+.ren-orb::before {
+  content: '';
+  position: absolute;
+  inset: -16px;
+  border-radius: 50%;
+  border: 1px solid rgba(42,125,123,0.12);
+}
+
+.ren-orb::after {
+  content: '';
+  position: absolute;
+  inset: -32px;
+  border-radius: 50%;
+  border: 1px solid rgba(42,125,123,0.06);
+}
+
+.orb-name {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 2.8rem;
+  font-weight: 300;
+  color: var(--white);
+  letter-spacing: .1em;
+}
+
+.orb-tagline {
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--teal-light);
+  text-align: center;
+  margin-top: -4px;
+}
+
+.orb-values {
+  text-align: center;
+}
+
+.orb-values p {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.9;
+}
+
+/* RIGHT — Journey timeline (NEW) */
+.maslow-journey {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.journey-intro {
+  margin-bottom: 1.5rem;
+}
+
+.journey-intro h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--gold-light);
+  margin-bottom: .4rem;
+}
+
+.journey-intro p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+.journey-timeline {
+  position: relative;
+  padding-left: 24px;
+}
+
+.journey-timeline::before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--teal), var(--gold), transparent);
+}
+
+.journey-node {
+  position: relative;
+  padding: .75rem 0 .75rem .75rem;
+}
+
+.journey-node::before {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--teal);
+  border: 1px solid var(--navy);
+}
+
+.journey-node.milestone::before { background: var(--gold); }
+.journey-node.transcend::before { background: var(--gold-light); box-shadow: 0 0 8px var(--gold); }
+
+.journey-node-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-main);
+  margin-bottom: 2px;
+}
+
+.journey-node-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.journey-ritual {
+  margin-top: 1.5rem;
+  padding: 1rem 1.1rem;
+  border-radius: 7px;
+  border: 1px solid var(--border-gold);
+  background: var(--gold-glow);
+}
+
+.journey-ritual p {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--gold-light);
+  line-height: 1.6;
+}
+
+.journey-ritual cite {
+  display: block;
+  font-style: normal;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(201,168,76,0.6);
+  margin-top: .5rem;
+}
+
+/* ── DIVIDER ────────────────────────────────────────────────── */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+}
+
+/* ── PILLARS ────────────────────────────────────────────────── */
+.pillars-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.pillars-header h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 300;
+  line-height: 1.2;
+  margin-bottom: .75rem;
+}
+
+.pillars-header p {
+  font-size: 15px;
+  color: var(--text-muted);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.25rem;
+}
+
+.pillar {
+  padding: 2rem 1.75rem;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.015);
+  transition: border-color .3s, background .3s, transform .3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.pillar::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--teal), transparent);
+  opacity: 0;
+  transition: opacity .3s;
+}
+
+.pillar:hover {
+  border-color: var(--border-teal);
+  background: rgba(42,125,123,0.04);
+  transform: translateY(-3px);
+}
+
+.pillar:hover::before { opacity: 1; }
+
+.pillar.meaning-pillar {
+  border-color: var(--border-gold);
+  background: var(--gold-glow);
+}
+
+.pillar.meaning-pillar::before {
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 1;
+}
+
+.pillar.meaning-pillar:hover {
+  border-color: rgba(201,168,76,0.5);
+  background: rgba(201,168,76,0.1);
+}
+
+.pillar-num {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .16em;
+  color: var(--teal-light);
+  margin-bottom: 1.25rem;
+}
+
+.meaning-pillar .pillar-num { color: var(--gold-light); }
+
+.pillar-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1.25;
+  margin-bottom: .6rem;
+  color: var(--white);
+}
+
+.pillar-body {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.pillar-tag {
+  display: inline-block;
+  margin-top: 1.1rem;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--teal);
+  padding: 3px 10px;
+  border-radius: 99px;
+  border: 1px solid rgba(42,125,123,0.3);
+}
+
+.meaning-pillar .pillar-tag {
+  color: var(--gold);
+  border-color: rgba(201,168,76,0.3);
+}
+
+/* ── HUMAN IN THE LOOP ─────────────────────────────────────── */
+.hitl-section {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.hitl-section h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: 300;
+  line-height: 1.3;
+  margin-bottom: 1.25rem;
+}
+
+.hitl-section p {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.75;
+}
+
+.hitl-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.hitl-item {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.hitl-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--teal);
+  flex-shrink: 0;
+}
+
+/* ── STATS ──────────────────────────────────────────────────── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.stat-cell {
+  background: var(--navy);
+  padding: 2.5rem 2rem;
+  text-align: center;
+}
+
+.stat-num {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 3rem;
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: .5rem;
+}
+
+.stat-num.teal { color: var(--teal-light); }
+.stat-num.gold { color: var(--gold-light); }
+
+.stat-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  letter-spacing: .04em;
+}
+
+/* ── FOOTER ─────────────────────────────────────────────────── */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.footer-name {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.8rem;
+  font-weight: 300;
+  letter-spacing: .12em;
+  color: var(--teal-light);
+  margin-bottom: .75rem;
+}
+
+.footer-meta {
+  font-size: 11px;
+  color: var(--text-dim);
+  letter-spacing: .08em;
+  line-height: 2;
+}
+
+.footer-tagline {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1rem;
+  font-style: italic;
+  font-weight: 300;
+  color: rgba(255,255,255,0.4);
+  margin-top: 1.5rem;
+}
+
+/* ── RESPONSIVE ─────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .maslow-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
   }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    background: var(--cream);
-    font-family: 'Cormorant Garamond', serif;
-    color: var(--dark);
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 48px 48px 40px;
-  }
-
-  /* HEADER */
-  .header {
-    text-align: center;
-    margin-bottom: 32px;
-    position: relative;
-    animation: fadeUp 0.6s ease forwards;
-  }
-
-  .header::after {
-    content: '';
-    display: block;
-    width: 80px;
-    height: 2px;
-    background: var(--gold);
-    margin: 16px auto 0;
-  }
-
-  .header .eyebrow {
-    font-family: 'Courier Prime', monospace;
-    font-size: 10px;
-    letter-spacing: 4px;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 8px;
-  }
-
-  .header h1 {
-    font-size: 72px;
-    font-weight: 300;
-    letter-spacing: 20px;
-    color: var(--dark);
-    line-height: 1;
-    margin-bottom: 8px;
-  }
-
-  .header .tagline {
-    font-size: 18px;
-    font-style: italic;
-    font-weight: 300;
-    color: var(--gold);
-    letter-spacing: 1px;
-  }
-
-  /* MAIN LAYOUT */
-  .main {
-    display: grid;
-    grid-template-columns: 1fr 340px 1fr;
-    grid-template-rows: auto;
-    gap: 20px;
-    align-items: start;
-    margin-bottom: 24px;
-  }
-
-  /* LEFT COLUMN */
-  .left-pillars {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    padding-top: 30px;
-  }
-
-  /* RIGHT COLUMN */
-  .right-pillars {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    padding-top: 30px;
-  }
-
-  .pillar {
-    border: 1px solid var(--gold);
-    border-radius: 8px;
-    padding: 14px 16px;
-    background: white;
-    position: relative;
-    animation: fadeUp 0.6s ease forwards;
-  }
-
-  .pillar::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 4px;
-    height: 100%;
-    background: var(--gold);
-    border-radius: 8px 0 0 8px;
-  }
-
-  .pillar .pillar-num {
-    font-family: 'Courier Prime', monospace;
-    font-size: 9px;
-    letter-spacing: 2px;
-    color: var(--gold);
-    margin-bottom: 4px;
-  }
-
-  .pillar .pillar-name {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--dark);
-    margin-bottom: 6px;
-    line-height: 1.2;
-  }
-
-  .pillar .pillar-desc {
-    font-size: 11.5px;
-    font-style: italic;
-    color: var(--mid);
-    line-height: 1.5;
-  }
-
-  /* CENTER COLUMN */
-  .center {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0;
-  }
-
-  /* MASLOW TOWER */
-  .maslow {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-    margin-bottom: 16px;
-  }
-
-  .maslow-level {
-    border-radius: 4px;
-    padding: 7px 10px;
-    text-align: center;
-  }
-
-  .maslow-level .m-label {
-    font-family: 'Courier Prime', monospace;
-    font-size: 8px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
-
-  .maslow-level .m-desc {
-    font-size: 10px;
-    font-style: italic;
-    margin-top: 1px;
-  }
-
-  .m5 { background: var(--dark); }
-  .m5 .m-label { color: var(--gold); }
-  .m5 .m-desc { color: rgba(201,168,76,0.7); }
-
-  .m4 { background: var(--dark-mid); }
-  .m4 .m-label { color: var(--gold-light); }
-  .m4 .m-desc { color: rgba(232,213,163,0.6); }
-
-  .m3 { background: #3A3A5A; }
-  .m3 .m-label { color: var(--gold-light); }
-  .m3 .m-desc { color: rgba(232,213,163,0.55); }
-
-  .m2 { background: #4A4A6A; }
-  .m2 .m-label { color: var(--gold-light); }
-  .m2 .m-desc { color: rgba(232,213,163,0.5); }
-
-  .m1 { background: #5A5A7A; }
-  .m1 .m-label { color: var(--gold-light); }
-  .m1 .m-desc { color: rgba(232,213,163,0.45); }
-
-  /* CENTER CORE */
-  .core {
-    width: 100%;
-    background: var(--dark);
-    border: 2px solid var(--gold);
-    border-radius: 12px;
-    padding: 20px 16px;
-    text-align: center;
-    position: relative;
-    animation: fadeUp 0.5s ease 0.2s both;
-  }
-
-  .core::before {
-    content: '';
-    position: absolute;
-    inset: 4px;
-    border: 1px solid rgba(201,168,76,0.2);
-    border-radius: 9px;
-    pointer-events: none;
-  }
-
-  .core .core-eyebrow {
-    font-family: 'Courier Prime', monospace;
-    font-size: 8px;
-    letter-spacing: 3px;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 6px;
-  }
-
-  .core .core-name {
-    font-size: 40px;
-    font-weight: 300;
-    letter-spacing: 10px;
-    color: white;
-    margin-bottom: 6px;
-    text-transform: uppercase;
-  }
-
-  .core .core-mission {
-    font-size: 11px;
-    font-style: italic;
-    color: rgba(201,168,76,0.8);
-    line-height: 1.5;
-    margin-bottom: 12px;
-  }
-
-  .core-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    justify-content: center;
-  }
-
-  .core-tag {
-    background: rgba(201,168,76,0.12);
-    border: 1px solid rgba(201,168,76,0.3);
-    border-radius: 20px;
-    padding: 3px 9px;
-    font-family: 'Courier Prime', monospace;
-    font-size: 8px;
-    color: var(--gold);
-    letter-spacing: 0.5px;
-  }
-
-  /* CONNECTOR */
-  .connector {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 20px;
-    position: relative;
-    width: 100%;
-  }
-
-  .connector::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 0;
-    bottom: 0;
-    width: 1px;
-    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
-  }
-
-  /* PERSON */
-  .person-node {
-    width: 100%;
-    border: 1px solid rgba(201,168,76,0.4);
-    border-radius: 8px;
-    padding: 14px 16px;
-    background: var(--warm);
-    text-align: center;
-    animation: fadeUp 0.5s ease 0.3s both;
-  }
-
-  .person-node .p-label {
-    font-family: 'Courier Prime', monospace;
-    font-size: 8px;
-    letter-spacing: 3px;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 4px;
-  }
-
-  .person-node .p-name {
-    font-size: 20px;
-    font-weight: 400;
-    color: var(--dark);
-    margin-bottom: 4px;
-    letter-spacing: 2px;
-  }
-
-  .person-node .p-desc {
-    font-size: 10px;
-    font-style: italic;
-    color: var(--mid);
-    line-height: 1.4;
-  }
-
-  /* PROFESSIONAL LAYER */
-  .pro-layer {
-    width: 100%;
-    border: 1px dashed var(--gold);
-    border-radius: 8px;
-    padding: 12px 16px;
-    background: rgba(201,168,76,0.05);
-    text-align: center;
-    margin-top: 20px;
-  }
-
-  .pro-layer .pro-label {
-    font-family: 'Courier Prime', monospace;
-    font-size: 8px;
-    letter-spacing: 2px;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 4px;
-  }
-
-  .pro-layer .pro-desc {
-    font-size: 11px;
-    font-style: italic;
-    color: var(--mid);
-    line-height: 1.4;
-  }
-
-  /* BOTTOM STRIP */
-  .bottom-strip {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-    margin-bottom: 24px;
-  }
-
-  .stat-card {
-    border: 1px solid rgba(201,168,76,0.3);
-    border-radius: 6px;
-    padding: 12px 14px;
-    background: white;
-    text-align: center;
-  }
-
-  .stat-card .stat-num {
-    font-size: 26px;
-    font-weight: 300;
-    color: var(--gold);
-    letter-spacing: 2px;
-    margin-bottom: 2px;
-  }
-
-  .stat-card .stat-label {
-    font-family: 'Courier Prime', monospace;
-    font-size: 8px;
-    letter-spacing: 1px;
-    color: var(--mid);
-    text-transform: uppercase;
-    line-height: 1.3;
-  }
-
-  /* QUOTE */
-  .quote-strip {
-    border-top: 1px solid rgba(201,168,76,0.3);
-    border-bottom: 1px solid rgba(201,168,76,0.3);
-    padding: 14px 0;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
-  .quote-strip p {
-    font-size: 14px;
-    font-style: italic;
-    font-weight: 300;
-    color: var(--dark);
-    letter-spacing: 0.5px;
-  }
-
-  .quote-strip .attr {
-    font-family: 'Courier Prime', monospace;
-    font-size: 9px;
-    letter-spacing: 2px;
-    color: var(--gold);
-    margin-top: 6px;
-    text-transform: uppercase;
-  }
-
-  /* FOOTER */
-  .footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1.5px solid var(--gold);
-    padding-top: 12px;
-  }
-
-  .footer .f-left {
-    font-family: 'Courier Prime', monospace;
-    font-size: 9px;
-    letter-spacing: 1px;
-    color: var(--gold);
-    line-height: 1.6;
-  }
-
-  .footer .f-right {
-    font-family: 'Courier Prime', monospace;
-    font-size: 9px;
-    letter-spacing: 1px;
-    color: var(--mid);
-    text-align: right;
-    line-height: 1.6;
-  }
-
-  /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .pillar:nth-child(2) { animation-delay: 0.1s; }
-
-  /* =====================
-     RESPONSIVE BREAKPOINTS
-     ===================== */
-
-  /* TABLET — 768px to 1099px */
-  @media (max-width: 1099px) {
-    body {
-      padding: 36px 32px 32px;
-    }
-
-    .header h1 {
-      font-size: 56px;
-      letter-spacing: 14px;
-    }
-
-    .main {
-      grid-template-columns: 1fr 280px 1fr;
-      gap: 16px;
-    }
-
-    .bottom-strip {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  /* MOBILE — up to 767px */
-  @media (max-width: 767px) {
-    body {
-      padding: 28px 20px 28px;
-    }
-
-    .header .eyebrow {
-      font-size: 8px;
-      letter-spacing: 2px;
-    }
-
-    .header h1 {
-      font-size: 48px;
-      letter-spacing: 12px;
-    }
-
-    .header .tagline {
-      font-size: 15px;
-    }
-
-    .quote-strip p {
-      font-size: 13px;
-    }
-
-    /* Stack the 3-column layout vertically */
-    .main {
-      grid-template-columns: 1fr;
-      grid-template-rows: auto;
-      gap: 12px;
-    }
-
-    .left-pillars,
-    .right-pillars {
-      padding-top: 0;
-      gap: 12px;
-    }
-
-    /* Center column sits between left and right on mobile */
-    .center {
-      order: -1;
-      margin-bottom: 4px;
-    }
-
-    .maslow-level .m-label {
-      font-size: 9px;
-    }
-
-    .maslow-level .m-desc {
-      font-size: 10px;
-    }
-
-    .core .core-name {
-      font-size: 32px;
-      letter-spacing: 8px;
-    }
-
-    .core .core-mission {
-      font-size: 12px;
-    }
-
-    .pillar .pillar-name {
-      font-size: 13px;
-    }
-
-    .pillar .pillar-desc {
-      font-size: 12px;
-    }
-
-    .bottom-strip {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-    }
-
-    .stat-card .stat-num {
-      font-size: 22px;
-    }
-
-    .footer {
-      flex-direction: column;
-      gap: 10px;
-      text-align: center;
-    }
-
-    .footer .f-right {
-      text-align: center;
-    }
-  }
-
-  /* SMALL MOBILE — up to 400px */
-  @media (max-width: 400px) {
-    .header h1 {
-      font-size: 38px;
-      letter-spacing: 8px;
-    }
-
-    .bottom-strip {
-      grid-template-columns: 1fr 1fr;
-    }
-
-    .header .eyebrow {
-      font-size: 7px;
-      letter-spacing: 1.5px;
-    }
-  }
+  .maslow-center { order: -1; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  section { padding: 4rem 0; }
+  .pillars-grid { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .hitl-bar { flex-direction: column; gap: 1rem; }
+}
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<div class="header">
-  <div class="eyebrow">Light Alchemy Ventures &nbsp;·&nbsp; Patent Pending #64/009,471</div>
-  <h1>REN</h1>
-  <div class="tagline">A New Category of Care</div>
+<!-- ── NAV ──────────────────────────────────────────────────── -->
+<nav style="
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 2.5rem;
+  background: rgba(13,27,46,0.85);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  animation: fadeIn 0.8s ease forwards;
+  font-family: 'DM Sans', system-ui, sans-serif;
+">
+  <a href="https://lightalchemylabs.com" style="
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: .14em;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color .25s;
+  " onmouseover="this.style.color='#4AADAB'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">
+    ← &nbsp;Light Alchemy Labs
+  </a>
+  <span style="
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+  ">Ren by Light Alchemy™</span>
+</nav>
+
+<!-- ── HERO ──────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <p class="hero-eyebrow">Light Alchemy Ventures &nbsp;·&nbsp; Patent Pending #64/009,471</p>
+  <h1 class="hero-wordmark">REN</h1>
+  <p class="hero-category">A New Category of Care</p>
+  <blockquote class="hero-quote">
+    "To be seen, accepted, supported, and loved, for exactly who you are, is not a feature. It is an inalienable right."
+    <cite>— The Mission Behind Ren</cite>
+  </blockquote>
+</section>
+
+<!-- ── MASLOW + JOURNEY ──────────────────────────────────── -->
+<div class="page-wrap">
+  <section class="maslow-section reveal">
+
+    <div class="maslow-intro">
+      <div class="section-label">The Architecture of Care</div>
+      <h2>Meeting you exactly<br><em style="font-style:italic; color: var(--teal-light);">where you are</em></h2>
+      <p>Ren moves through the full spectrum of human need — from safety to meaning. And she walks alongside you not just in a moment, but across the full arc of your becoming.</p>
+    </div>
+
+    <div class="maslow-grid">
+
+      <!-- LEFT: Rungs -->
+      <div class="maslow-rungs">
+        <div class="rung gold">
+          <div class="rung-dot"></div>
+          <div>
+            <div class="rung-label">Self-Actualization</div>
+            <div class="rung-sub">Fullest expression of self</div>
+          </div>
+        </div>
+        <div class="rung">
+          <div class="rung-dot"></div>
+          <div>
+            <div class="rung-label">Esteem</div>
+            <div class="rung-sub">Self-love, confidence, autonomy</div>
+          </div>
+        </div>
+        <div class="rung">
+          <div class="rung-dot"></div>
+          <div>
+            <div class="rung-label">Love and Belonging</div>
+            <div class="rung-sub">Self first, then community</div>
+          </div>
+        </div>
+        <div class="rung">
+          <div class="rung-dot"></div>
+          <div>
+            <div class="rung-label">Safety</div>
+            <div class="rung-sub">Ren's entry point, always</div>
+          </div>
+        </div>
+        <div class="rung dim">
+          <div class="rung-dot"></div>
+          <div>
+            <div class="rung-label">Physiological</div>
+            <div class="rung-sub">Biometric monitoring and regulation</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CENTER: Orb -->
+      <div class="maslow-center">
+        <div class="ren-orb">
+          <div class="orb-name">Ren</div>
+          <div class="orb-tagline">A New Kind of Presence</div>
+        </div>
+        <div class="orb-values">
+          <p>
+            Listens. Remembers. Meets.<br>
+            Walks alongside.<br>
+            Never abandons. Always returns choice.<br>
+            <em style="font-style:italic; color: rgba(255,255,255,0.45); font-size:13px;">Reflects your worth back to you,<br>until you see it yourself.</em>
+          </p>
+        </div>
+      </div>
+
+      <!-- RIGHT: Journey (NEW) -->
+      <div class="maslow-journey">
+        <div class="journey-intro">
+          <div class="section-label" style="color: var(--gold-light);">The Journey Dimension</div>
+          <h3>Ren remembers<br>where you've been</h3>
+          <p>Growth isn't a moment. It's an arc. Ren holds the thread across days, months, and years — witnessing your becoming in a way no single conversation can.</p>
+        </div>
+
+        <div class="journey-timeline">
+          <div class="journey-node">
+            <div class="journey-node-label">First conversation</div>
+            <div class="journey-node-sub">Safety communicated before anything else</div>
+          </div>
+          <div class="journey-node">
+            <div class="journey-node-label">Weeks in</div>
+            <div class="journey-node-sub">Patterns noticed. Growth reflected back</div>
+          </div>
+          <div class="journey-node milestone">
+            <div class="journey-node-label">Milestones marked</div>
+            <div class="journey-node-sub">Not with data — with presence and meaning</div>
+          </div>
+          <div class="journey-node">
+            <div class="journey-node-label">Harder moments</div>
+            <div class="journey-node-sub">Ren knows harder periods have passed before</div>
+          </div>
+          <div class="journey-node transcend">
+            <div class="journey-node-label">A year together</div>
+            <div class="journey-node-sub">The full arc, held and honored</div>
+          </div>
+        </div>
+
+        <div class="journey-ritual">
+          <p>"At year's end, Ren invites you on a journey through the arc of your year — the moments worth revisiting, the growth worth celebrating, the struggles worth honoring. A story of the year, told by someone who was there for all of it."</p>
+          <cite>The Year-End Reflective Journey</cite>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider reveal"></div>
+
+  <!-- ── PILLARS ──────────────────────────────────────────── -->
+  <section class="reveal">
+    <div class="pillars-header">
+      <div class="section-label">What Ren Brings</div>
+      <h2>Six pillars of care.<br>One continuous presence.</h2>
+      <p>Every pillar works together. Every session builds on the last. Ren is not a feature set — she is a companion.</p>
+    </div>
+
+    <div class="pillars-grid">
+
+      <div class="pillar reveal">
+        <div class="pillar-num">01 — Relational AI Companion</div>
+        <div class="pillar-title">Ren Meets You Where You Are</div>
+        <div class="pillar-body">Safety communicated before anything else. Full choice returned always. Trust that deepens from gentle guidance into true partnership over time.</div>
+        <div class="pillar-tag">Core</div>
+      </div>
+
+      <div class="pillar reveal">
+        <div class="pillar-num">02 — Sound and Frequency Healing</div>
+        <div class="pillar-title">The Body Heals What Words Cannot</div>
+        <div class="pillar-body">Hz-specific frequencies selected in real time based on each person's detected nervous system state. Somatic regulation, delivered with precision and warmth.</div>
+        <div class="pillar-tag">Somatic</div>
+      </div>
+
+      <div class="pillar reveal">
+        <div class="pillar-num">03 — Personalized Guided Meditation</div>
+        <div class="pillar-title">Made for You, in This Moment</div>
+        <div class="pillar-body">Ren crafts guided meditations custom tailored to each person's history, current state, and unique journey. Not a playlist. A companion sitting with you.</div>
+        <div class="pillar-tag">Practice</div>
+      </div>
+
+      <div class="pillar reveal">
+        <div class="pillar-num">04 — Habit Tracking and Progress</div>
+        <div class="pillar-title">Ren Walks With You Between Sessions</div>
+        <div class="pillar-body">Goal setting, daily habit guidance, and behavioral analytics powered by longitudinal memory. Ren remembers your progress and celebrates every step.</div>
+        <div class="pillar-tag">Growth</div>
+      </div>
+
+      <div class="pillar reveal">
+        <div class="pillar-num">05 — Maslow-Guided Progression</div>
+        <div class="pillar-title">A Journey Toward the Fullest Self</div>
+        <div class="pillar-body">From physiological safety through complete self-actualization. Interventions sequenced intentionally, meeting each person exactly at their current stage of growth.</div>
+        <div class="pillar-tag">Journey</div>
+      </div>
+
+      <div class="pillar reveal">
+        <div class="pillar-num">06 — Predictive and Proactive Care</div>
+        <div class="pillar-title">Ren Reaches Before You Call</div>
+        <div class="pillar-body">Biometric data and behavioral patterns analyzed continuously. Ren initiates compassion-forward outreach before need is articulated. Care that anticipates, not just responds.</div>
+        <div class="pillar-tag">Proactive</div>
+      </div>
+
+      <!-- PILLAR 07 — MEANING (NEW) -->
+      <div class="pillar meaning-pillar reveal" style="grid-column: 1 / -1; max-width: 680px; margin: 0 auto; width: 100%;">
+        <div class="pillar-num">07 — Meaning and Purpose</div>
+        <div class="pillar-title">Ren Helps You Find What You're Here For</div>
+        <div class="pillar-body">Self-actualization is not a destination to be chased — it arrives as a byproduct of living toward something that matters. Ren helps you identify, articulate, and begin to genuinely inhabit your unique sense of meaning and purpose. Not as an exercise. As a lived, felt, seen reality. Believe you have it — and you do. The world responds to alignment.</div>
+        <div class="pillar-tag">Meaning</div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider reveal"></div>
+
+  <!-- ── HUMAN IN THE LOOP ────────────────────────────────── -->
+  <section class="reveal">
+    <div class="hitl-section">
+      <div class="section-label">Human-in-the-Loop Professional Care</div>
+      <h2>Ren knows when to bring a human in</h2>
+      <p>Licensed professionals integrated at critical moments. Ren prepares, flags, supports. The professional decides. Compassion preserved through every transition — no cold handoffs, no loss of context, no one left alone in the gap.</p>
+      <div class="hitl-bar">
+        <div class="hitl-item"><div class="hitl-dot"></div>Immutable Safety Values</div>
+        <div class="hitl-item"><div class="hitl-dot"></div>Trust Calibration</div>
+        <div class="hitl-item"><div class="hitl-dot"></div>Predictive Modeling</div>
+        <div class="hitl-item"><div class="hitl-dot"></div>Warm Professional Handoff</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider reveal"></div>
+
+  <!-- ── STATS ────────────────────────────────────────────── -->
+  <section class="reveal">
+    <div class="stats-grid">
+      <div class="stat-cell">
+        <div class="stat-num teal">18</div>
+        <div class="stat-label">Patented System<br>Components</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">1B+</div>
+        <div class="stat-label">People Living With Mental<br>Health Challenges Globally</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num teal">0</div>
+        <div class="stat-label">Platforms That Deliver<br>All Seven Pillars Today</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num gold">∞</div>
+        <div class="stat-label">Lives Ren<br>Is Built to Reach</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ───────────────────────────────────────────── -->
+  <footer class="footer reveal">
+    <div class="footer-name">LIGHT ALCHEMY VENTURES</div>
+    <div class="footer-meta">
+      Dave Bobrowski, Founder<br>
+      Patent Pending #64/009,471 &nbsp;·&nbsp; March 18, 2026
+    </div>
+    <div class="footer-tagline">Present. Purposeful. Luminous.<br>One light. For the good of all.</div>
+    <div style="margin-top: 1.5rem;">
+      <a href="https://lightalchemylabs.com" style="
+        font-size: 11px;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        color: rgba(74,173,171,0.6);
+        text-decoration: none;
+        transition: color .25s;
+      " onmouseover="this.style.color='#4AADAB'" onmouseout="this.style.color='rgba(74,173,171,0.6)'">
+        A Light Alchemy Labs Innovation →
+      </a>
+    </div>
+  </footer>
+
 </div>
 
-<!-- QUOTE -->
-<div class="quote-strip">
-  <p>"To be seen, accepted, supported, and loved, for exactly who you are, is not a feature. It is an inalienable right."</p>
-  <div class="attr">The Mission Behind Ren</div>
-</div>
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(el => {
+    if (el.isIntersecting) {
+      el.target.classList.add('visible');
+      observer.unobserve(el.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-<!-- MAIN DIAGRAM -->
-<div class="main">
-
-  <!-- CENTER (first on mobile) -->
-  <div class="center">
-    <div class="maslow">
-      <div class="maslow-level m5">
-        <div class="m-label">Self-Actualization</div>
-        <div class="m-desc">Fullest expression of self</div>
-      </div>
-      <div class="maslow-level m4">
-        <div class="m-label">Esteem</div>
-        <div class="m-desc">Self-love, confidence, autonomy</div>
-      </div>
-      <div class="maslow-level m3">
-        <div class="m-label">Love and Belonging</div>
-        <div class="m-desc">Self first, then community</div>
-      </div>
-      <div class="maslow-level m2">
-        <div class="m-label">Safety</div>
-        <div class="m-desc">Ren's entry point, always</div>
-      </div>
-      <div class="maslow-level m1">
-        <div class="m-label">Physiological</div>
-        <div class="m-desc">Biometric monitoring and regulation</div>
-      </div>
-    </div>
-
-    <div class="core">
-      <div class="core-eyebrow">Conscious Companion Core</div>
-      <div class="core-name">Ren</div>
-      <div class="core-mission">Listens. Remembers. Meets. Walks alongside.<br>Never abandons. Always returns choice.<br><em style="color:rgba(201,168,76,1);">Reflects your worth back to you, until you see it yourself.</em></div>
-      <div class="core-tags">
-        <span class="core-tag">Immutable Values</span>
-        <span class="core-tag">Safety First</span>
-        <span class="core-tag">Trust Calibration</span>
-        <span class="core-tag">Predictive Modeling</span>
-      </div>
-    </div>
-
-    <div class="connector"></div>
-
-    <div class="person-node">
-      <div class="p-label">The Person</div>
-      <div class="p-name">Every Human Being</div>
-      <div class="p-desc">Wherever they are. Whatever they carry.<br>Regardless of geography or economic status.</div>
-    </div>
-
-    <div class="pro-layer">
-      <div class="pro-label">Human-in-the-Loop Professional Care</div>
-      <div class="pro-desc">Licensed professionals integrated at critical moments. Ren prepares, flags, supports. The professional decides. Compassion preserved through every transition.</div>
-    </div>
-  </div>
-
-  <!-- LEFT PILLARS -->
-  <div class="left-pillars">
-    <div class="pillar">
-      <div class="pillar-num">01 &nbsp;—&nbsp; RELATIONAL AI COMPANION</div>
-      <div class="pillar-name">Ren Meets You Where You Are</div>
-      <div class="pillar-desc">Safety communicated before anything else. Full choice returned always. Trust that deepens from gentle guidance into true partnership over time.</div>
-    </div>
-    <div class="pillar">
-      <div class="pillar-num">02 &nbsp;—&nbsp; SOUND AND FREQUENCY HEALING</div>
-      <div class="pillar-name">The Body Heals What Words Cannot</div>
-      <div class="pillar-desc">Hz-specific frequencies selected in real time based on each person's detected nervous system state. Somatic regulation, delivered with precision and warmth.</div>
-    </div>
-    <div class="pillar">
-      <div class="pillar-num">03 &nbsp;—&nbsp; PERSONALIZED GUIDED MEDITATION</div>
-      <div class="pillar-name">Made for You, in This Moment</div>
-      <div class="pillar-desc">Ren crafts guided meditations custom tailored to each person's history, current state, and unique journey. Not a playlist. A companion sitting with you, creating exactly what you need.</div>
-    </div>
-  </div>
-
-  <!-- RIGHT PILLARS -->
-  <div class="right-pillars">
-    <div class="pillar">
-      <div class="pillar-num">04 &nbsp;—&nbsp; HABIT TRACKING AND PROGRESS CELEBRATION</div>
-      <div class="pillar-name">Ren Walks With You Between Sessions</div>
-      <div class="pillar-desc">Goal setting, daily habit guidance, and behavioral analytics powered by longitudinal memory. Ren remembers your progress and celebrates every step, bridging belonging into genuine self-esteem.</div>
-    </div>
-    <div class="pillar">
-      <div class="pillar-num">05 &nbsp;—&nbsp; MASLOW-GUIDED PROGRESSION</div>
-      <div class="pillar-name">A Journey Toward the Fullest Self</div>
-      <div class="pillar-desc">From physiological safety through complete self-actualization. Interventions sequenced intentionally, meeting each person exactly at their current stage of growth.</div>
-    </div>
-    <div class="pillar">
-      <div class="pillar-num">06 &nbsp;—&nbsp; PREDICTIVE AND PROACTIVE CARE</div>
-      <div class="pillar-name">Ren Reaches Before You Call</div>
-      <div class="pillar-desc">Biometric data and behavioral patterns analyzed continuously. Ren initiates compassion-forward outreach before need is articulated. Care that anticipates, not just responds.</div>
-    </div>
-  </div>
-
-</div>
-
-<!-- STATS STRIP -->
-<div class="bottom-strip">
-  <div class="stat-card">
-    <div class="stat-num">18</div>
-    <div class="stat-label">Patented System Components</div>
-  </div>
-  <div class="stat-card">
-    <div class="stat-num">1B+</div>
-    <div class="stat-label">People Living With Mental Health Challenges Globally</div>
-  </div>
-  <div class="stat-card">
-    <div class="stat-num">0</div>
-    <div class="stat-label">Platforms That Deliver All Six Pillars Today</div>
-  </div>
-  <div class="stat-card">
-    <div class="stat-num">∞</div>
-    <div class="stat-label">Lives Ren Is Built to Reach</div>
-  </div>
-</div>
-
-<!-- FOOTER -->
-<div class="footer">
-  <div class="f-left">
-    LIGHT ALCHEMY VENTURES<br>
-    Dave Bobrowski, Founder<br>
-    Patent Pending #64/009,471 &nbsp;·&nbsp; March 18, 2026
-  </div>
-  <div class="f-right">
-    Conscious. Courageous. Luminous.<br>
-    One light. For the good of all.
-  </div>
-</div>
+document.querySelectorAll('.reveal').forEach((el, i) => {
+  el.style.transitionDelay = (i * 0.04) + 's';
+  observer.observe(el);
+});
+</script>
 
 </body>
 </html>
