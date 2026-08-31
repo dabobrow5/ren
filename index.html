@@ -7,12 +7,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Cormorant:ital,wght@1,300&display=swap" rel="stylesheet">
-<link rel="icon" href="favicon.ico" sizes="any">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<link rel="manifest" href="site.webmanifest">
 
 <style>
 :root {
@@ -742,6 +736,30 @@ section { padding: 6rem 0; }
 </nav>
 
 <!-- ── HERO ──────────────────────────────────────────────── -->
+<style>
+  /* Anchor scrolling. `scroll-behavior` is set on the element rather than globally so it cannot
+     fight the scroll-reveal observer, and reduced-motion is honoured — a long smooth scroll is
+     exactly the kind of movement that makes some people ill. */
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  /* The section sits under nothing, but a little breathing room above it reads better than
+     landing with the heading jammed against the top of the viewport. */
+  #waitlist { scroll-margin-top: 2rem; }
+
+  .hero-cta {
+    display: inline-block; margin-top: 2.5rem;
+    padding: 15px 2rem;                      /* 52px tall — past the 44px touch minimum */
+    border: 1px solid var(--border-gold); border-radius: 8px;
+    background: rgba(201,168,76,0.06);
+    color: var(--gold-light); text-decoration: none;
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-size: .82rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase;
+    transition: background .25s, border-color .25s, color .25s;
+  }
+  .hero-cta:hover { background: rgba(201,168,76,0.13); border-color: var(--gold); color: var(--gold-light); }
+  .hero-cta:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+</style>
+
 <section class="hero">
   <div class="hero-glow"></div>
   <p class="hero-eyebrow">Light Alchemy Ventures &nbsp;·&nbsp; Patent Pending #64/009,471</p>
@@ -751,6 +769,10 @@ section { padding: 6rem 0; }
     "To be seen, accepted, supported, and loved, for exactly who you are, is not a feature. It is an inalienable right."
     <cite>— The Mission Behind Ren</cite>
   </blockquote>
+
+  <!-- The page is long and the form is at the end of it. Someone who is already persuaded by the
+       first screen should not have to scroll past the whole argument to act on it. -->
+  <a class="hero-cta" href="#waitlist">Join the waitlist</a>
 </section>
 
 <!-- ── MASLOW + JOURNEY ──────────────────────────────────── -->
@@ -966,6 +988,138 @@ section { padding: 6rem 0; }
     </div>
   </section>
 
+  <!-- ── WAITLIST ─────────────────────────────────────────
+       Placed after the stats on purpose: the page ends on "Lives Ren Is Built to Reach — ∞",
+       and this is the moment to let someone say "one of them is me." Before this section the
+       site had no way for anyone to raise a hand at all.
+  ───────────────────────────────────────────────────────── -->
+  <style>
+    .waitlist { max-width: 560px; margin: 0 auto; text-align: center; }
+    .waitlist h2 { margin-bottom: .75rem; }
+    .waitlist-copy {
+      color: var(--text-muted); font-size: 1rem; line-height: 1.7; margin: 0 auto 2rem;
+      max-width: 30rem;
+    }
+    .waitlist-stack { display: flex; flex-direction: column; gap: 1.5rem; text-align: left; }
+    .waitlist-field { display: flex; flex-direction: column; gap: .5rem; }
+    .waitlist-label {
+      font-family: 'DM Sans', system-ui, sans-serif; font-size: .82rem; font-weight: 500;
+      letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted);
+    }
+    .waitlist-optional {
+      text-transform: none; letter-spacing: 0; font-weight: 400;
+      color: var(--text-dim); font-size: .8rem;
+    }
+    .waitlist-hint { color: var(--text-dim); font-size: .8125rem; line-height: 1.6; margin: 0; }
+    select.waitlist-input { appearance: none; cursor: pointer; padding-right: 2.5rem; }
+    .waitlist-input {
+      flex: 1; min-width: 0;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0 1rem; height: 52px;              /* comfortably past the 44px touch minimum */
+      color: var(--text-main);
+      font-family: 'DM Sans', system-ui, sans-serif; font-size: 1rem;
+      transition: border-color .25s, background .25s;
+    }
+    .waitlist-input::placeholder { color: var(--text-dim); }
+    .waitlist-input:focus {
+      outline: none; border-color: var(--border-teal); background: rgba(255,255,255,0.06);
+    }
+    .waitlist-btn {
+      height: 52px; padding: 0 1.75rem;
+      background: var(--teal); color: var(--white);
+      border: none; border-radius: 8px; cursor: pointer;
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: .9rem; font-weight: 500; letter-spacing: .06em; text-transform: uppercase;
+      transition: background .25s, transform .1s;
+    }
+    .waitlist-btn:hover:not(:disabled) { background: var(--teal-light); }
+    .waitlist-btn:active:not(:disabled) { transform: translateY(1px); }
+    .waitlist-btn:disabled { opacity: .55; cursor: default; }
+    .waitlist-btn:focus-visible, .waitlist-input:focus-visible {
+      outline: 2px solid var(--gold); outline-offset: 3px;
+    }
+    /* The honeypot. Not display:none — some bots skip hidden fields, and some screen readers
+       would announce it. Off-canvas and taken out of the tab order instead. */
+    .waitlist-hp {
+      position: absolute; left: -9999px; width: 1px; height: 1px;
+      opacity: 0; pointer-events: none;
+    }
+    .waitlist-note { color: var(--text-dim); font-size: .8125rem; margin-top: 1rem; }
+    .waitlist-status { margin-top: 1.25rem; font-size: .95rem; line-height: 1.6; min-height: 1.5rem; }
+    .waitlist-status.ok { color: var(--gold-light); font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.25rem; }
+    .waitlist-status.err { color: #E28F8F; }
+  </style>
+
+  <section class="reveal" id="waitlist">
+    <div class="waitlist">
+      <div class="section-label">Ren Is In Private Beta</div>
+      <h2>Be told when there is room</h2>
+      <p class="waitlist-copy">
+        Ren is open to a small number of people while she is still being built. Leave your
+        address and we will tell you when there is room for you — nothing else, ever.
+      </p>
+
+      <form class="waitlist-stack" id="waitlistForm" novalidate>
+        <label class="waitlist-hp" aria-hidden="true">
+          Website<input type="text" name="website" tabindex="-1" autocomplete="off">
+        </label>
+
+        <div class="waitlist-field">
+          <label class="waitlist-label" for="waitlistName">What should Ren call you?</label>
+          <input class="waitlist-input" id="waitlistName" type="text" name="name"
+                 placeholder="Your first name" autocomplete="given-name" maxlength="60" required>
+        </div>
+
+        <div class="waitlist-field">
+          <label class="waitlist-label" for="waitlistEmail">Your Google account email</label>
+          <input class="waitlist-input" id="waitlistEmail" type="email" name="email"
+                 placeholder="you@gmail.com" autocomplete="email" required
+                 aria-describedby="waitlistGoogleNote">
+          <p class="waitlist-hint" id="waitlistGoogleNote">
+            Ren currently signs in with Google only, so this needs to be an address tied to a
+            Google account — a Gmail address, or a work address that uses Google. Other sign-in
+            options are coming.
+          </p>
+        </div>
+
+        <div class="waitlist-field">
+          <label class="waitlist-label" for="waitlistPronouns">
+            Your pronouns <span class="waitlist-optional">optional</span>
+          </label>
+          <select class="waitlist-input" id="waitlistPronouns" name="pronouns">
+            <option value="">Prefer not to say</option>
+            <option value="she">she / her</option>
+            <option value="he">he / him</option>
+            <option value="they">they / them</option>
+            <option value="she-they">she / they</option>
+            <option value="he-they">he / they</option>
+            <option value="ze">ze / zir</option>
+            <option value="xe">xe / xem</option>
+          </select>
+          <p class="waitlist-hint">
+            Ren never guesses this from a name. Left blank, she uses they/them — which is a
+            perfectly good permanent answer.
+          </p>
+        </div>
+
+        <button class="waitlist-btn" type="submit" id="waitlistBtn">Join the waitlist</button>
+      </form>
+
+      <div class="waitlist-status" id="waitlistStatus" role="status" aria-live="polite"></div>
+      <p class="waitlist-note">
+        We will not share your address, and there is no newsletter.
+        <a href="https://ren-lav-prod.web.app/privacy.html"
+           style="color: rgba(74,173,171,0.75); text-decoration: underline; text-underline-offset: .2em;">
+          How we hold your privacy
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <div class="divider reveal"></div>
+
   <!-- ── FOOTER ───────────────────────────────────────────── -->
   <footer class="footer reveal">
     <div class="footer-name">LIGHT ALCHEMY VENTURES</div>
@@ -1005,6 +1159,75 @@ document.querySelectorAll('.reveal').forEach((el, i) => {
   el.style.transitionDelay = (i * 0.04) + 's';
   observer.observe(el);
 });
+
+// ── Waitlist ──────────────────────────────────────────────
+// Posts to a Cloud Function rather than writing to Firestore from here, so this page carries no
+// Firebase config and no SDK. The endpoint answers identically whether an address is new or
+// already on the list — a form that says "you're already signed up" is a way of testing whether
+// a given person uses Ren, and this one will not be that.
+(function () {
+  var form   = document.getElementById('waitlistForm');
+  var input  = document.getElementById('waitlistEmail');
+  var btn    = document.getElementById('waitlistBtn');
+  var status = document.getElementById('waitlistStatus');
+  if (!form) return;
+
+  var ENDPOINT = 'https://us-central1-ren-lav-prod.cloudfunctions.net/renWaitlistJoin';
+
+  function show(message, kind) {
+    status.textContent = message;
+    status.className = 'waitlist-status' + (kind ? ' ' + kind : '');
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var email = (input.value || '').trim();
+    var name  = (document.getElementById('waitlistName').value || '').trim();
+
+    if (!name) {
+      show('Ren would like to know what to call you.', 'err');
+      document.getElementById('waitlistName').focus();
+      return;
+    }
+
+    // Checked here only to save a round trip. The server validates properly; a client-side
+    // regex is a courtesy, never a gate.
+    if (!email || email.indexOf('@') < 1 || email.lastIndexOf('.') < email.indexOf('@')) {
+      show('That address does not look quite right — could you check it?', 'err');
+      input.focus();
+      return;
+    }
+
+    btn.disabled = true;
+    show('');
+
+    fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: email,
+        name: (document.getElementById('waitlistName').value || '').trim(),
+        pronouns: document.getElementById('waitlistPronouns').value || undefined,
+        // Taken from the browser, never asked and never inferred server-side. Ren must not guess
+        // someone's time of day — "this evening" to someone eating breakfast is worse than silence.
+        tz: (function () {
+          try { return Intl.DateTimeFormat().resolvedOptions().timeZone; } catch (e) { return undefined; }
+        })(),
+        website: form.website ? form.website.value : ''
+      })
+    })
+      .then(function (r) { return r.json().catch(function () { return { ok: r.ok }; }); })
+      .then(function (data) {
+        if (!data || !data.ok) throw new Error(data && data.error);
+        form.style.display = 'none';
+        show('Thank you. We will tell you when there is room.', 'ok');
+      })
+      .catch(function () {
+        btn.disabled = false;
+        show('Something went wrong on our end. Please try again in a moment.', 'err');
+      });
+  });
+})();
 </script>
 
 </body>
