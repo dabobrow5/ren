@@ -1073,6 +1073,18 @@ section { padding: 6rem 0; }
         </div>
 
         <div class="waitlist-field">
+          <label class="waitlist-label" for="waitlistLast">
+            Last name <span class="waitlist-optional">optional</span>
+          </label>
+          <input class="waitlist-input" id="waitlistLast" type="text" name="lastName"
+                 placeholder="Your last name" autocomplete="family-name" maxlength="60">
+          <p class="waitlist-hint">
+            Ren will only ever use your first name. This is for our records, so we can find you
+            again when there is room.
+          </p>
+        </div>
+
+        <div class="waitlist-field">
           <label class="waitlist-label" for="waitlistEmail">Your Google account email</label>
           <input class="waitlist-input" id="waitlistEmail" type="email" name="email"
                  placeholder="you@gmail.com" autocomplete="email" required
@@ -1081,6 +1093,19 @@ section { padding: 6rem 0; }
             Ren currently signs in with Google only, so this needs to be an address tied to a
             Google account — a Gmail address, or a work address that uses Google. Other sign-in
             options are coming.
+          </p>
+        </div>
+
+        <div class="waitlist-field">
+          <label class="waitlist-label" for="waitlistDevice">What phone do you use?</label>
+          <select class="waitlist-input" id="waitlistDevice" name="device" required>
+            <option value="">Choose one</option>
+            <option value="ios">iPhone or iPad</option>
+            <option value="android">Android</option>
+          </select>
+          <p class="waitlist-hint">
+            Ren's app is in early testing on iPhone and iPad. On Android you'll use Ren in your
+            browser for now — the same Ren, and an app will follow.
           </p>
         </div>
 
@@ -1190,6 +1215,12 @@ document.querySelectorAll('.reveal').forEach((el, i) => {
       return;
     }
 
+    if (!document.getElementById('waitlistDevice').value) {
+      show('Which phone do you use? It decides what we can offer you.', 'err');
+      document.getElementById('waitlistDevice').focus();
+      return;
+    }
+
     // Checked here only to save a round trip. The server validates properly; a client-side
     // regex is a courtesy, never a gate.
     if (!email || email.indexOf('@') < 1 || email.lastIndexOf('.') < email.indexOf('@')) {
@@ -1207,7 +1238,9 @@ document.querySelectorAll('.reveal').forEach((el, i) => {
       body: JSON.stringify({
         email: email,
         name: (document.getElementById('waitlistName').value || '').trim(),
+        lastName: (document.getElementById('waitlistLast').value || '').trim() || undefined,
         pronouns: document.getElementById('waitlistPronouns').value || undefined,
+        device: document.getElementById('waitlistDevice').value || undefined,
         // Taken from the browser, never asked and never inferred server-side. Ren must not guess
         // someone's time of day — "this evening" to someone eating breakfast is worse than silence.
         tz: (function () {
