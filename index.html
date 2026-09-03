@@ -1251,13 +1251,25 @@ document.querySelectorAll('.reveal').forEach((el, i) => {
     })
       .then(function (r) { return r.json().catch(function () { return { ok: r.ok }; }); })
       .then(function (data) {
-        if (!data || !data.ok) throw new Error(data && data.error);
+        if (!data || !data.ok) { var e = new Error('rejected'); e.reason = data && data.error; throw e; }
         form.style.display = 'none';
         show('Thank you. We will tell you when there is room.', 'ok');
       })
-      .catch(function () {
+      .catch(function (e) {
         btn.disabled = false;
-        show('Something went wrong on our end. Please try again in a moment.', 'err');
+        /*
+          SAY WHICH IT WAS. Every failure used to read "something went wrong on our end" —
+          including a mistyped address, which is not our end, and which the person could have
+          fixed in two seconds. Miriah hit this on 3 September, was told it was our fault, and
+          gave up. The fallback now offers a human, so nobody is ever left with only a dead end.
+        */
+        if (e && e.reason === 'invalid_email') {
+          show('That address does not look quite right — could you check it and try again?', 'err');
+          input.focus();
+          input.select();
+        } else {
+          show('Something went wrong on our end. Please try again, or email dave@lightalchemyventures.com and we will add you by hand.', 'err');
+        }
       });
   });
 })();
