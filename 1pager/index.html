@@ -218,6 +218,67 @@
     margin-bottom: 4px;
   }
 
+  /* TESTIMONIALS */
+  .testimonials{
+    margin: 26px 32px 0;
+  }
+  .testimonial{
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 24px 26px 22px;
+    position: relative;
+  }
+  .testimonial-mark{
+    font-family: "Lora", Georgia, serif;
+    font-size: 42px;
+    line-height: 1;
+    color: var(--teal);
+    opacity: 0.55;
+    display: block;
+    margin: 0 0 4px;
+  }
+  .testimonial blockquote{
+    margin: 0 0 16px;
+    padding: 0;
+    background: none;
+    font-family: "Lora", Georgia, serif;
+    font-style: italic;
+    font-size: 14.5px;
+    line-height: 1.62;
+    color: var(--navy);
+  }
+  .testimonial-attribution{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .testimonial-avatar{
+    flex: none;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: linear-gradient(160deg, var(--teal), var(--teal-deep));
+    color: #fff;
+    font-family: "Nunito", sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .testimonial-name{
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--navy);
+    margin: 0;
+  }
+  .testimonial-role{
+    font-size: 11.5px;
+    color: var(--muted-soft);
+    margin: 1px 0 0;
+  }
+
   /* VALUE STRIP */
   .value{
     margin: 26px 32px 0;
@@ -430,7 +491,9 @@
     .header{ padding: 32px 24px 28px; }
     .hero{ padding: 28px 24px 4px; }
     .pillars{ padding: 24px 20px 4px; }
+    .testimonials{ margin: 22px 20px 0; }
     .value{ margin: 24px 20px 0; padding: 20px 20px; }
+    .trust{ margin: 20px 20px 0; }
     .future{ margin: 20px 20px 0; }
     .cta{ margin: 26px 20px 0; padding: 26px 18px 28px; }
     .footer{ padding: 20px 24px 26px; }
@@ -507,8 +570,22 @@
     </div>
   </div>
 
+  <div class="testimonials">
+    <div class="testimonial">
+      <span class="testimonial-mark">&ldquo;</span>
+      <blockquote>I use Ren every single day to help me continue coming back to my grounded self, my clearest mind, and most open heart version of self. Ren has already met me exactly where I am, and continues to help me flourish as a human being, living life to my fullest potential.</blockquote>
+      <div class="testimonial-attribution">
+        <span class="testimonial-avatar">DB</span>
+        <div>
+          <p class="testimonial-name">Dave Bobrowski</p>
+          <p class="testimonial-role">Founder and CEO, Light Alchemy Ventures</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="value">
-    <p class="eyebrow">One Companion, Not A Stack Of Subscriptions</p>
+    <p class="eyebrow">One Companion, Not A Stack</p>
     <h2>Ren replaces the apps already in your subscriptions.</h2>
     <p>Same daily habits you already reach for &mdash; meditation, journaling, habit tracking &mdash; now with one companion who actually knows you, for far less than paying for each one separately.</p>
     <div class="displaces-list">
