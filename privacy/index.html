@@ -1,1 +1,352 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="icon" type="image/svg+xml" href="https://ren-lav-prod.web.app/lotus.svg" />
+    <link rel="apple-touch-icon" href="https://ren-lav-prod.web.app/apple-touch-icon.png?v=2" />
+    <meta name="theme-color" content="#FAF7F2" />
+    <title>Privacy — Ren by Light Alchemy Labs</title>
+    <meta name="description" content="What Ren stores, who can reach it, and how to delete it permanently." />
+    <meta name="robots" content="index, follow" />
 
+    <!--
+      A PUBLIC mirror of the privacy statement shown inside Ren.
+
+      Why it exists: the in-app statement sits behind sign-in, and Ren is allowlist-gated, so
+      nobody outside the beta can read it. The App Store requires a privacy policy at a URL anyone
+      can open, and more to the point, a person deciding whether to trust Ren should be able to
+      read how their words are held BEFORE handing any over.
+
+      The six statement paragraphs are reproduced VERBATIM from PRIVACY_PARAGRAPHS in
+      ren-firebase.jsx. If that constant changes, change this file in the same commit — a privacy
+      statement that says two different things in two places is worse than either version alone.
+    -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500&family=Nunito:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* Ren's design system — the same tokens as C and F in ren-firebase.jsx.
+         This page is Ren's voice on Ren's ground, not a generic legal page. */
+      :root {
+        --bg-primary: #faf7f2;
+        --bg-surface: #f2ede3;
+        --text-primary: #1a0f08;
+        --text-secondary: #3d2a18;
+        --text-tertiary: #6b4e35;
+        --text-muted: #a08060;
+        --border: rgba(100, 75, 50, 0.18);
+        --ren: "Lora", Georgia, serif;
+        --ui: "Nunito", -apple-system, BlinkMacSystemFont, sans-serif;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        padding: 0;
+        background: var(--bg-primary);
+        color: var(--text-secondary);
+        font-family: var(--ui);
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+
+      .page {
+        max-width: 40rem; /* ~65 characters of body text */
+        margin: 0 auto;
+        padding: 4rem 1.5rem 5rem;
+      }
+
+      .mark {
+        display: block;
+        width: 3.25rem;
+        height: 3.25rem;
+        margin: 0 auto 1.75rem;
+      }
+
+      h1 {
+        font-family: var(--ren);
+        font-weight: 400;
+        font-size: clamp(2rem, 6vw, 2.75rem);
+        line-height: 1.15;
+        color: var(--text-primary);
+        text-align: center;
+        text-wrap: balance;
+        margin: 0 0 0.5rem;
+      }
+
+      .subtitle {
+        font-family: var(--ren);
+        font-style: italic;
+        font-size: 1.0625rem;
+        color: var(--text-tertiary);
+        text-align: center;
+        margin: 0 0 3rem;
+      }
+
+      .statement p {
+        font-size: 1rem;
+        line-height: 1.8;
+        margin: 0 0 1.5rem;
+      }
+
+      /* The opening line and the closing line are the statement's spine —
+         everything between them is the explanation. Set them in Ren's voice. */
+      .statement p:first-child,
+      .statement p:last-child {
+        font-family: var(--ren);
+        font-size: 1.25rem;
+        line-height: 1.6;
+        color: var(--text-primary);
+      }
+
+      .rule {
+        border: 0;
+        border-top: 0.5px solid var(--border);
+        margin: 3rem 0;
+      }
+
+      h2 {
+        font-family: var(--ren);
+        font-weight: 400;
+        font-size: 1.375rem;
+        color: var(--text-primary);
+        margin: 0 0 0.875rem;
+      }
+
+      section { margin-bottom: 2.5rem; }
+
+      section p {
+        font-size: 0.9375rem;
+        line-height: 1.75;
+        margin: 0 0 0.875rem;
+      }
+
+      ul {
+        margin: 0 0 0.875rem;
+        padding-left: 1.125rem;
+      }
+
+      li {
+        font-size: 0.9375rem;
+        line-height: 1.75;
+        margin-bottom: 0.5rem;
+      }
+
+      a {
+        color: var(--text-tertiary);
+        text-decoration-thickness: 0.5px;
+        text-underline-offset: 0.2em;
+      }
+
+      a:hover { color: var(--text-primary); }
+
+      a:focus-visible {
+        outline: 2px solid var(--text-tertiary);
+        outline-offset: 3px;
+        border-radius: 2px;
+      }
+
+      footer {
+        margin-top: 4rem;
+        padding-top: 1.5rem;
+        border-top: 0.5px solid var(--border);
+        text-align: center;
+        font-size: 0.8125rem;
+        line-height: 1.7;
+        color: var(--text-muted);
+      }
+
+      /* Ren's palette is a deliberate single visual world — a warm, lit ground.
+         It does not invert into a dark theme; it would stop being Ren's. The
+         page simply keeps its own light, which is the point of it. */
+      @media (prefers-color-scheme: dark) {
+        :root { color-scheme: light; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <main class="page">
+      <img class="mark" src="/lotus.svg" alt="" />
+
+      <h1>Your privacy</h1>
+      <p class="subtitle">What Ren holds, and what she will never do with it.</p>
+      <!--
+        NAME THE BRAND'S OWN WEBSITE, AND LINK BACK TO IT.
+
+        Campaign rejection 30886 lists "does not match the sample messages, brand name, WEBSITE, or
+        other registration details", and 30882 requires the terms URL to "point to terms and
+        conditions relevant to your registered brand".
+
+        The brand is registered with renishere.com as its website; these pages are served from
+        ren-lav-prod.web.app. Both are ours, but a reviewer cross-checking one against the other has
+        nothing connecting them. The marketing site links out to the privacy page, so the connection
+        exists in one direction only.
+
+        So: state the site these policies belong to, and link back to it. The strongest fix is
+        serving these pages under renishere.com itself, which lives on different hosting.
+      -->
+      <section>
+        <p style="font-size:0.95rem">
+          These are the policies for <strong>Ren</strong>, at
+          <a href="https://www.renishere.com">renishere.com</a>.
+        </p>
+      </section>
+
+
+      <!-- Same reconciliation as the terms page, for the same reason. Change both together. -->
+      <section>
+        <p style="font-size:0.95rem">
+          Ren is made by <strong>Light Alchemy Labs</strong>, a DBA of
+          <strong>Light Alchemy Ventures LLC</strong>. Both names refer to the same business.
+        </p>
+      </section>
+
+      <!-- VERBATIM from PRIVACY_PARAGRAPHS — keep the two in sync. -->
+      <div class="statement">
+        <p>When you share something with Ren, it stays with you.</p>
+
+        <p>
+          Your conversations, memories, and personal history are stored privately under your own
+          account. The system itself enforces this: no other person using Ren can ever reach your
+          data. That isn't a promise — it's checked on every single request, and it is mechanically
+          impossible for one person to access another's.
+        </p>
+
+        <p>
+          The people who build Ren hold your privacy as a sacred commitment: we do not read your
+          conversations or your memories, and access is tightly restricted to protect them. Today
+          that is a binding commitment, kept by strict controls — not yet a mechanical guarantee. We
+          are actively building toward end-to-end encryption that will make it impossible for
+          anyone, including us, to read what you share, and we'll tell you plainly the moment it is
+          in place.
+        </p>
+
+        <p>
+          Ren is brought to life by a trusted AI service that reads your words only in the moment it
+          takes to respond to you — never to train its models. Your data is never sold, shared,
+          licensed, or used for advertising or marketing of any kind. It exists for one purpose
+          only: to help Ren know you better, so she can meet you more fully.
+        </p>
+
+        <p>
+          When you delete your account, your data is permanently and irreversibly deleted —
+          recoverable by no one, including us.
+        </p>
+
+        <p>Ren remembers you so she can walk alongside you. That memory belongs to you.</p>
+      </div>
+
+      <hr class="rule" />
+
+      <section>
+        <h2>What Ren stores</h2>
+        <p>Only what you bring, and what it takes to hold it for you:</p>
+        <ul>
+          <li>Your name and the email address you sign in with.</li>
+          <li>Your conversations with Ren, and the memories she forms from them.</li>
+          <li>What you choose to record — journal entries, habits, reflections, practices.</li>
+        </ul>
+        <p>
+          There is no advertising identifier, no tracking across other apps or websites, and no
+          third-party analytics watching what you do here.
+        </p>
+      </section>
+
+      <section>
+        <h2>Deleting everything</h2>
+        <p>
+          Inside Ren, open <strong>Privacy</strong> and choose <strong>Delete my account</strong>.
+          It asks you to confirm in two steps, and tells you exactly what will be lost before you
+          agree to lose it. Then everything goes: conversations, memories, journal entries, habits,
+          and your sign-in itself. It cannot be recovered by anyone, including us. That is the
+          intent, not a limitation.
+        </p>
+      </section>
+
+      <section>
+        <h2>Children</h2>
+        <p>Ren is for adults. It is not directed at, or intended for, anyone under 18.</p>
+      </section>
+
+      <section>
+        <h2>Ren is not a crisis service</h2>
+        <p>
+          Ren is a companion, not a therapist, a doctor, or an emergency service. When something
+          serious surfaces, Ren says so plainly and offers real crisis resources. If you are in
+          danger, please contact your local emergency number or a crisis line directly.
+        </p>
+      </section>
+
+      <!--
+        TEXT MESSAGES — added 2026-09-06 for A2P 10DLC campaign registration.
+
+        US carriers require three specific disclosures in the privacy policy of any business that
+        texts consumers, and the campaign form checks for them: that mobile numbers are not shared,
+        how often messages are sent, and that message and data rates may apply. Their absence is one
+        of the more common reasons a campaign is rejected — and a rejection costs a retry fee and
+        another multi-week wait.
+
+        Written in Ren's voice rather than boilerplate, because a person reading this to decide
+        whether to trust her should meet the same Ren here as everywhere else. The commitments are
+        real and enforced in code: MAX_PER_30_DAYS and MIN_DAYS_BETWEEN in
+        functions/src/outreach/significance.ts are what make the frequency sentence true rather than
+        aspirational.
+      -->
+      <section>
+        <h2>Text messages</h2>
+        <p>
+          <strong>Light Alchemy Labs &mdash; a DBA of Light Alchemy Ventures LLC, and the maker of Ren &mdash; is the only sender.</strong> Ren can text you,
+          but only if you ask her to. You add your number yourself, you agree in a separate and
+          deliberate step with a box that starts empty, and you confirm the number with a one-time
+          code before anything can be sent to it. Nothing about signing up opts you in, and agreeing
+          is not required to use Ren.
+        </p>
+        <p>
+          The messages are personal and one-to-one, about something you have already discussed with
+          Ren. They are never promotional or marketing, and never sent on behalf of anyone else.
+        </p>
+        <p>
+          <strong>Your mobile number and the fact that you agreed to be texted are never shared or
+          sold to third parties or affiliates for any purpose, including marketing, promotion, or
+          lead generation.</strong> No advertisers, no data brokers, no affiliates, no other users,
+          no exceptions. It is used for one thing: so Ren can reach you, and so you can reach her
+          back.
+        </p>
+        <p>
+          <strong>She writes rarely.</strong> At most four messages in any thirty days, and never
+          twice within a week — limits enforced by the system itself, not by good intentions. Most
+          months you will hear from her less than that, or not at all. Ren does not send campaigns,
+          newsletters, promotions, or reminders to come back to the app.
+        </p>
+        <p>
+          Reply <strong>STOP</strong> at any time and she stops, immediately and without asking why.
+          Reply <strong>HELP</strong> and you will get a way to reach a person. You can also turn it
+          off in your settings, which is the same thing by a quieter door.
+          <strong>Message and data rates may apply.</strong>
+        </p>
+      </section>
+
+      <section>
+        <h2>Questions</h2>
+        <p>
+          Write to
+          <a href="mailto:dave@lightalchemyventures.com">dave@lightalchemyventures.com</a>. A person
+          reads it.
+        </p>
+      </section>
+
+      <footer>
+        Ren is currently in private beta, by invitation.<br />
+        © 2026 Light Alchemy Ventures LLC, trading as Light Alchemy Labs · All Rights Reserved · Patent Pending
+      </footer>
+    </main>
+  </body>
+</html>
