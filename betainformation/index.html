@@ -356,6 +356,17 @@
   }
   .link-pill:hover{ background: rgba(255,255,255,0.26); }
   .link-pill:focus-visible{ outline: 2px solid #ffffff; outline-offset: 2px; }
+  .iphone-flag{
+    font-size: 12px;
+    line-height: 1.5;
+    color: #eefaf6;
+    background: rgba(255,255,255,0.14);
+    border: 1px solid rgba(255,255,255,0.32);
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin: 12px 0 0;
+  }
+  .iphone-flag b{ color: #ffffff; }
 
   .feedback-intro{
     font-size: 13.5px;
@@ -456,17 +467,70 @@
     font-size: 12px;
     color: var(--muted-soft);
     margin: 0;
+    word-break: break-all;
   }
   .install-url a{ color: var(--teal); }
-  .android-note{
+  .platform-intro{
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--muted);
+    margin: 4px 0 16px;
+    max-width: 68ch;
+  }
+  .platform-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .platform-card{
+    background: var(--quote-bg);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 18px 20px 20px;
+  }
+  .platform-card.ios{
+    border: 1.5px solid var(--teal);
+    background: linear-gradient(170deg, rgba(47,143,127,0.12), var(--quote-bg) 60%);
+  }
+  .platform-top{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .platform-icon{ font-size: 18px; line-height: 1; }
+  .platform-badge{
+    font-size: 9.5px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: var(--teal);
+    color: #ffffff;
+    padding: 3px 9px;
+    border-radius: 999px;
+  }
+  .platform-label{
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted-soft);
+  }
+  .platform-card h4{
+    font-size: 14.5px;
+    font-weight: 800;
+    color: var(--ink);
+    margin: 0 0 6px;
+  }
+  .platform-card p{
     font-size: 12.5px;
     line-height: 1.55;
     color: var(--muted);
-    margin: 14px 0 0;
-    padding-top: 14px;
-    border-top: 1px solid var(--line);
+    margin: 0 0 4px;
   }
-  .android-note b{ color: var(--ink); }
+  @media (max-width: 640px){
+    .platform-grid{ grid-template-columns: 1fr; }
+  }
 
   .footer{
     border-top: 1px solid var(--line);
@@ -577,6 +641,7 @@
           <li><b>Beta access only</b> — do not share this link publicly.</li>
         </ul>
         <a class="link-pill" href="https://ren-lav-prod.web.app" target="_blank" rel="noopener">ren-lav-prod.web.app</a>
+        <p class="iphone-flag">📱 <b>On iPhone?</b> Use the TestFlight app instead of this link — see &ldquo;Get The Full Experience&rdquo; below.</p>
       </div>
 
       <div class="section">
@@ -654,14 +719,26 @@
 
   <div class="home-screen">
     <p class="label">Get The Full Experience</p>
-    <div class="home-screen-inner">
-      <span class="home-screen-icon">📲</span>
-      <div>
-        <h2>Get Ren on your phone</h2>
-        <p>On iPhone, install the native Ren app through TestFlight — one tap, always up to date.</p>
+    <h2>Get Ren on your phone</h2>
+    <p class="platform-intro">The right route depends on your phone &mdash; please use the one that matches yours.</p>
+    <div class="platform-grid">
+      <div class="platform-card ios">
+        <div class="platform-top">
+          <span class="platform-icon">📱</span>
+          <span class="platform-badge">iPhone &middot; Use The App</span>
+        </div>
+        <h4>Install via TestFlight</h4>
+        <p>Please don&rsquo;t just use the web link on iPhone &mdash; install the native app instead. It&rsquo;s the full Ren experience, one tap, and always up to date.</p>
         <a class="install-btn" href="https://testflight.apple.com/join/VkaxFTmq" target="_blank" rel="noopener">Get Ren via TestFlight</a>
         <p class="install-url"><a href="https://testflight.apple.com/join/VkaxFTmq" target="_blank" rel="noopener">https://testflight.apple.com/join/VkaxFTmq</a></p>
-        <p class="android-note">On Android, open your link to Ren in Chrome, tap the menu, and choose <b>Add to Home Screen</b> for a full-screen, app-like experience.</p>
+      </div>
+      <div class="platform-card">
+        <div class="platform-top">
+          <span class="platform-icon">🤖</span>
+          <span class="platform-label">Android</span>
+        </div>
+        <h4>Add Ren to your Home Screen</h4>
+        <p>Open your link to Ren (above) in Chrome, tap the menu, and choose <b>Add to Home Screen</b> for a full-screen, app-like experience.</p>
       </div>
     </div>
   </div>
