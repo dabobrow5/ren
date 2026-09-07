@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -166,11 +166,10 @@
     font-weight: 700;
     font-size: 21px;
     line-height: 1.3;
-    color: var(--navy);
+    color: var(--ink);
     text-wrap: balance;
     margin: 0 0 10px;
   }
-  :root[data-theme="dark"] h2, @media (prefers-color-scheme: dark){ }
   p{
     font-size: 14.5px;
     line-height: 1.62;
@@ -190,9 +189,8 @@
     font-style: italic;
     font-size: 14.5px;
     line-height: 1.55;
-    color: var(--navy);
+    color: var(--ink);
   }
-  :root[data-theme="dark"] blockquote, .dark blockquote{ color: #dfe7e4; }
 
   .ask-box{
     background: linear-gradient(160deg, var(--navy), var(--navy-deep));
@@ -267,7 +265,7 @@
   .area-card h4{
     font-size: 14px;
     font-weight: 800;
-    color: var(--navy);
+    color: var(--ink);
     margin: 0 0 6px;
   }
   .area-card.flagship h4{ color: #ffffff; }
@@ -318,7 +316,7 @@
   .step h4{
     font-size: 14.5px;
     font-weight: 800;
-    color: var(--navy);
+    color: var(--ink);
     margin: 0 0 3px;
   }
   .step p{ margin: 0; font-size: 13.5px; }
@@ -352,7 +350,12 @@
     font-size: 13.5px;
     letter-spacing: 0.02em;
     color: #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.15s ease;
   }
+  .link-pill:hover{ background: rgba(255,255,255,0.26); }
+  .link-pill:focus-visible{ outline: 2px solid #ffffff; outline-offset: 2px; }
 
   .feedback-intro{
     font-size: 13.5px;
@@ -437,9 +440,33 @@
     margin: 12px 0 0;
   }
   .home-note a{ color: var(--teal); }
-  .home-screen-inner + .home-screen-inner{
-    margin-top: 16px;
+  .install-btn{
+    display: inline-block;
+    background: linear-gradient(160deg, var(--teal), var(--teal-deep));
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 13.5px;
+    letter-spacing: 0.02em;
+    padding: 9px 20px;
+    border-radius: 999px;
+    text-decoration: none;
+    margin: 10px 0 6px;
   }
+  .install-url{
+    font-size: 12px;
+    color: var(--muted-soft);
+    margin: 0;
+  }
+  .install-url a{ color: var(--teal); }
+  .android-note{
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: var(--muted);
+    margin: 14px 0 0;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+  }
+  .android-note b{ color: var(--ink); }
 
   .footer{
     border-top: 1px solid var(--line);
@@ -450,7 +477,7 @@
     gap: 20px;
     flex-wrap: wrap;
   }
-  .footer .org{ font-size: 13px; font-weight: 800; color: var(--navy); margin: 0 0 3px; }
+  .footer .org{ font-size: 13px; font-weight: 800; color: var(--ink); margin: 0 0 3px; }
   .footer p{ font-size: 12px; margin: 0; color: var(--muted-soft); max-width: 56ch; }
   .footer .thanks{
     font-size: 11.5px;
@@ -548,10 +575,8 @@
         <ul>
           <li>Sign in using the <b>Google account</b> tied to your registered email address.</li>
           <li><b>Beta access only</b> — do not share this link publicly.</li>
-          <li>📱 <b>On iPhone?</b> Skip this link — scroll down to <b>Get The Full Experience</b> and install Ren via TestFlight instead.</li>
-          <li>🤖 <b>On Android?</b> Use the link below, then follow the Home Screen instructions at the bottom of this page.</li>
         </ul>
-        <span class="link-pill">ren-lav-prod.web.app</span>
+        <a class="link-pill" href="https://ren-lav-prod.web.app" target="_blank" rel="noopener">ren-lav-prod.web.app</a>
       </div>
 
       <div class="section">
@@ -587,10 +612,9 @@
     <h2>Show up often. Go deep. Explore it all.</h2>
     <p class="lede">Conversational depth with Ren is what unlocks everything else — the more real a conversation gets, the more Ren can actually support you across the rest of the platform. This isn&rsquo;t a one-and-done check-in. It&rsquo;s an invitation to live inside Ren for the beta window and see what each area offers.</p>
     <div class="ask-box">
-      <div class="ask-number">30</div>
       <div>
-        <h3>Minutes, minimum — every time you sit down with Ren.</h3>
-        <p>A quick click-around won&rsquo;t tell you much. Show up as you would with anyone you actually wanted to talk to, and return often over the beta window.</p>
+        <h3>Real conversation is what reveals Ren.</h3>
+        <p>A quick click-around won&rsquo;t tell you much. Show up as you would with anyone you actually wanted to talk to, and return often over the beta window &mdash; that&rsquo;s what lets Ren, and everything else here, really show up for you.</p>
       </div>
     </div>
 
@@ -630,58 +654,14 @@
 
   <div class="home-screen">
     <p class="label">Get The Full Experience</p>
-
-    <div class="home-screen-inner" style="margin-bottom: 18px;">
-      <span class="home-screen-icon">🍎</span>
+    <div class="home-screen-inner">
+      <span class="home-screen-icon">📲</span>
       <div>
-        <h2>On iPhone — Install Ren from TestFlight</h2>
-        <p>Ren is now a native iOS app. Your welcome email from Dave includes your TestFlight link — here's what to do with it.</p>
-        <ul class="home-steps">
-          <li>
-            <span class="step-num">1</span>
-            <p>Install <b>TestFlight</b> from the App Store first — it's free and takes under a minute.</p>
-          </li>
-          <li>
-            <span class="step-num">2</span>
-            <p>Open your <b>Light Alchemy welcome email</b> and tap the <b>TestFlight link</b> inside to install Ren.</p>
-          </li>
-          <li>
-            <span class="step-num">3</span>
-            <p>Sign in with your <b>Google account</b> once inside the app.</p>
-          </li>
-          <li>
-            <span class="step-num">4</span>
-            <p>If you saved Ren as a browser shortcut before, <b>delete the old icon</b> from your Home Screen — only the TestFlight version has the full audio experience.</p>
-          </li>
-        </ul>
-        <p class="home-note">Everything you've built with Ren — your history, habits, and journey — comes with you. Nothing resets.</p>
-      </div>
-    </div>
-
-    <div class="home-screen-inner" style="background: var(--card); border: 1px solid var(--line);">
-      <span class="home-screen-icon">🤖</span>
-      <div>
-        <h2>On Android — Save Ren to Your Home Screen</h2>
-        <p>TestFlight is iOS only. Android users stay on the web version — nothing changes, nothing is lost. Save Ren to your Home Screen for one-tap access.</p>
-        <ul class="home-steps">
-          <li>
-            <span class="step-num">1</span>
-            <p>Open <b>Chrome</b> and visit your Ren link: <b>ren-lav-prod.web.app</b></p>
-          </li>
-          <li>
-            <span class="step-num">2</span>
-            <p>Tap the <b>three-dot menu</b> in the top-right corner of Chrome.</p>
-          </li>
-          <li>
-            <span class="step-num">3</span>
-            <p>Tap <b>Add to Home Screen</b> (or <b>Install App</b> if shown).</p>
-          </li>
-          <li>
-            <span class="step-num">4</span>
-            <p>Confirm by tapping <b>Add</b> — Ren will appear on your Home Screen just like a native app.</p>
-          </li>
-        </ul>
-        <p class="home-note">An Android native app is on the roadmap. You'll be the first to know when that changes.</p>
+        <h2>Get Ren on your phone</h2>
+        <p>On iPhone, install the native Ren app through TestFlight — one tap, always up to date.</p>
+        <a class="install-btn" href="https://testflight.apple.com/join/VkaxFTmq" target="_blank" rel="noopener">Get Ren via TestFlight</a>
+        <p class="install-url"><a href="https://testflight.apple.com/join/VkaxFTmq" target="_blank" rel="noopener">https://testflight.apple.com/join/VkaxFTmq</a></p>
+        <p class="android-note">On Android, open your link to Ren in Chrome, tap the menu, and choose <b>Add to Home Screen</b> for a full-screen, app-like experience.</p>
       </div>
     </div>
   </div>
