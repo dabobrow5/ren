@@ -6,15 +6,15 @@
     <link rel="icon" type="image/svg+xml" href="https://ren-lav-prod.web.app/lotus.svg" />
     <link rel="apple-touch-icon" href="https://ren-lav-prod.web.app/apple-touch-icon.png?v=2" />
     <meta name="theme-color" content="#FAF7F2" />
-    <title>Terms — Ren by Light Alchemy Labs</title>
+    <title>Terms, Ren by Light Alchemy Labs</title>
     <meta name="description" content="The terms you and Ren are working under, in plain language." />
     <meta name="robots" content="index, follow" />
 
     <!--
-      TERMS OF USE — written 2026-09-06.
+      TERMS OF USE, written 2026-09-06.
 
       Why it exists: A2P 10DLC campaign registration asks for a terms URL alongside the privacy
-      policy, and I had given Dave a link to this page before it existed — a URL I checked with an
+      policy, and I had given Dave a link to this page before it existed, a URL I checked with an
       HTTP status code on a single-page app, where the catch-all rewrite returns 200 for every path
       that has never been created. A status code is not evidence that a page exists.
 
@@ -31,7 +31,7 @@
     />
 
     <style>
-      /* Ren's design system — the same tokens as C and F in ren-firebase.jsx.
+      /* Ren's design system, the same tokens as C and F in ren-firebase.jsx.
          This page is Ren's voice on Ren's ground, not a generic legal page. */
       :root {
         --bg-primary: #faf7f2;
@@ -96,7 +96,7 @@
         margin: 0 0 1.5rem;
       }
 
-      /* The opening line and the closing line are the statement's spine —
+      /* The opening line and the closing line are the statement's spine ,
          everything between them is the explanation. Set them in Ren's voice. */
       .statement p:first-child,
       .statement p:last-child {
@@ -163,7 +163,7 @@
         color: var(--text-muted);
       }
 
-      /* Ren's palette is a deliberate single visual world — a warm, lit ground.
+      /* Ren's palette is a deliberate single visual world, a warm, lit ground.
          It does not invert into a dark theme; it would stop being Ren's. The
          page simply keeps its own light, which is the point of it. */
       @media (prefers-color-scheme: dark) {
@@ -222,7 +222,7 @@
       <section>
         <p>
           <strong>This page is the agreement.</strong> It covers who may use Ren, what each of us
-          owns, what we promise and what we don&rsquo;t. It says nothing about your data &mdash;
+          owns, what we promise and what we don&rsquo;t. It says nothing about your data ,
           what is stored, who can reach it, how long it is kept and how to delete it is a separate
           question with its own answer in the <a href="/privacy">privacy statement</a>.
         </p>
@@ -232,7 +232,7 @@
         <h2>1. Eligibility and your account</h2>
         <p>
           Ren is in private beta, by invitation. You must be 18 or older. Your account is tied to the
-          email address you sign in with and is yours alone &mdash; please don&rsquo;t share it.
+          email address you sign in with and is yours alone, please don&rsquo;t share it.
           Ren&rsquo;s way of working depends on knowing whose words are whose, and a shared account
           quietly ruins that for both people.
         </p>
@@ -262,7 +262,7 @@
         <p>
           <strong>What you write is yours.</strong> We claim no ownership of it and do not use it to
           train anyone else&rsquo;s models. You grant us only the permission needed to operate Ren for
-          you &mdash; to store your words and show them back to you.
+          you, to store your words and show them back to you.
         </p>
         <p>
           <strong>Ren is ours.</strong> Her design, her voice, the system behind her and the name are
@@ -286,11 +286,38 @@
 
         So this duplicates the privacy statement deliberately. If one changes, change both.
       -->
+      <!--
+        SECTION 5 IS THE MESSAGING PROGRAM DISCLOSURE, and it is checked line by line.
+
+        Rejected 30882 TWICE. The first time, this section was one line pointing at the privacy
+        statement. The second time it was complete prose and still failed, because Twilio's
+        compliance guidance requires SIX specific elements in a messaging program's terms and we had
+        five. The missing one was the carrier liability sentence, which is required close to
+        verbatim and which no amount of good writing substitutes for.
+
+        The six, all present below and all of which must stay:
+          1. a description of the program being opted into
+          2. specific message frequency, stated as a number over a period
+          3. "Message and data rates may apply"
+          4. customer care contact information
+          5. how to stop receiving messages
+          6. "Carriers are not liable for delayed or undelivered messages"
+
+        Plus the A2P-specific ones: consent is direct, unbundled and unchecked by default, and the
+        mobile number is never shared or sold to third parties or affiliates.
+
+        The privacy statement carries the same content deliberately. Change both together.
+      -->
       <section>
         <h2>5. Text messages from Ren</h2>
         <p>
-          <strong>Who sends them.</strong> Light Alchemy Labs (a DBA of Light Alchemy Ventures LLC),
-          the maker of Ren, from a single US number. Nobody else sends on our behalf and we send on behalf of nobody else.
+          <strong>The program.</strong> Ren Personal Check-ins, an SMS program operated by Light
+          Alchemy Labs, a DBA of Light Alchemy Ventures LLC. By opting in, you agree to receive text
+          messages from Light Alchemy Labs at the mobile number you provide.
+        </p>
+        <p>
+          <strong>Who sends them.</strong> Light Alchemy Labs, the maker of Ren, from a single US
+          number. Nobody else sends on our behalf and we send on behalf of nobody else.
         </p>
         <p>
           <strong>Who receives them.</strong> Only people with a Ren account who have added their own
@@ -299,8 +326,8 @@
         </p>
         <p>
           <strong>Why.</strong> So Ren can reach you about something you have already talked about
-          with her &mdash; a date you told her was hard, a thing you asked her to ask you about.
-          Nothing promotional, nothing marketing, no offers, no third-party content.
+          with her: a date you told her was hard, a thing you asked her to ask you about. Nothing
+          promotional, nothing marketing, no offers, no third-party content.
         </p>
         <p>
           <strong>How you agree.</strong> In your profile settings, by ticking a box that is empty by
@@ -309,21 +336,26 @@
           with the date. Agreeing is not required to use Ren.
         </p>
         <p>
+          <strong>Message frequency: up to 4 messages per month.</strong> Never twice within a week.
+          Most months, fewer or none.
+        </p>
+        <p>
+          <strong>Message and data rates may apply.</strong>
+        </p>
+        <p>
+          <strong>To stop:</strong> reply <strong>STOP</strong> to any message and they end
+          immediately. You can also switch it off in your settings at any time.
+          <strong>For help:</strong> reply <strong>HELP</strong>, or contact us at
+          <a href="mailto:dave@lightalchemyventures.com">dave@lightalchemyventures.com</a>.
+        </p>
+        <p>
+          <strong>Carriers are not liable for delayed or undelivered messages.</strong>
+        </p>
+        <p>
           <strong>Your number stays with us.</strong> Your mobile number and the fact that you
           consented are <strong>never shared or sold to any third party or affiliate for any
           purpose</strong>, including marketing, promotion, and lead generation. No advertisers, no
           data brokers, no exceptions.
-        </p>
-        <p>
-          <strong>How often.</strong> Rarely &mdash; at most four messages in any thirty days, and
-          never twice within a week. Most months, fewer or none.
-        </p>
-        <p>
-          <strong>Stopping.</strong> Reply <strong>STOP</strong> to any message and they end
-          immediately. Reply <strong>HELP</strong> for support, or write to
-          <a href="mailto:dave@lightalchemyventures.com">dave@lightalchemyventures.com</a>. You can
-          also switch it off in your settings at any time. <strong>Message and data rates may
-          apply.</strong>
         </p>
         <p>
           How your number is stored and how to delete it is in the
