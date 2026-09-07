@@ -1,1 +1,657 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ren Waitlist One-Pager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
+<style>
+  :root{
+    --navy: #16304f;
+    --navy-deep: #0f2438;
+    --teal: #2f8f7f;
+    --teal-deep: #1d6d5f;
+    --lavender: #b79fe0;
+    --lavender-deep: #8a6bb8;
+    --parchment: #faf7f2;
+    --card: #fffefb;
+    --line: #e4ddd0;
+    --ink: #26303f;
+    --muted: #5c6472;
+    --muted-soft: #7c8494;
+    --gold: #d8a840;
+    --shadow: rgba(22,48,79,0.14);
+  }
+
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --navy: #0f2036;
+      --navy-deep: #0a1826;
+      --teal: #3ba492;
+      --teal-deep: #2a8577;
+      --lavender: #c3aee6;
+      --lavender-deep: #a488cf;
+      --parchment: #14181d;
+      --card: #1c2128;
+      --line: #333a44;
+      --ink: #e9e7e1;
+      --muted: #b7bcc4;
+      --muted-soft: #8b929e;
+      --gold: #e0b85a;
+      --shadow: rgba(0,0,0,0.4);
+    }
+  }
+  :root[data-theme="dark"]{
+    --navy: #0f2036;
+    --navy-deep: #0a1826;
+    --teal: #3ba492;
+    --teal-deep: #2a8577;
+    --lavender: #c3aee6;
+    --lavender-deep: #a488cf;
+    --parchment: #14181d;
+    --card: #1c2128;
+    --line: #333a44;
+    --ink: #e9e7e1;
+    --muted: #b7bcc4;
+    --muted-soft: #8b929e;
+    --gold: #e0b85a;
+    --shadow: rgba(0,0,0,0.4);
+  }
+
+  *{ box-sizing: border-box; }
+  body{
+    margin: 0;
+    background: var(--parchment);
+    color: var(--ink);
+    font-family: "Nunito", ui-sans-serif, system-ui, sans-serif;
+    padding: 36px 16px 56px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .sheet{
+    width: 100%;
+    max-width: 640px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 30px 70px -34px var(--shadow);
+  }
+
+  /* HEADER */
+  .header{
+    position: relative;
+    background: linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 100%);
+    padding: 40px 40px 34px;
+    text-align: center;
+    color: #f2f0ea;
+    overflow: hidden;
+  }
+  .header::before{
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--teal), var(--lavender), var(--gold));
+  }
+  .lotus{ width: 92px; height: 92px; margin: 2px auto 12px; display: block; }
+  .wordmark{
+    font-family: "Lora", Georgia, serif;
+    font-weight: 600;
+    font-size: 40px;
+    margin: 0;
+    letter-spacing: 0.01em;
+    color: #fbfaf7;
+  }
+  .wordmark .by{
+    font-size: 16px;
+    font-weight: 500;
+    color: #a9b8c9;
+    margin-left: 8px;
+  }
+  .tagline{
+    font-family: "Lora", Georgia, serif;
+    font-style: italic;
+    font-size: 16px;
+    color: #c7d3e0;
+    margin: 10px 0 0;
+  }
+
+  /* HERO */
+  .hero{
+    padding: 34px 40px 8px;
+    text-align: center;
+  }
+  .hero h1{
+    font-family: "Lora", Georgia, serif;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1.3;
+    color: var(--ink);
+    text-wrap: balance;
+    margin: 0 0 14px;
+  }
+  .hero p{
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--muted);
+    margin: 0 auto;
+    max-width: 46ch;
+  }
+
+  /* PILLARS */
+  .pillars{
+    padding: 28px 32px 6px;
+  }
+  .pillars-label{
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--teal);
+    text-align: center;
+    display: block;
+    margin: 0 0 18px;
+  }
+  .pillar-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .pillar{
+    background: var(--parchment);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 16px 16px 15px;
+  }
+  .pillar.flagship{
+    background: linear-gradient(160deg, var(--teal), var(--teal-deep));
+    border-color: transparent;
+    color: #eefaf6;
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 18px;
+  }
+  .pillar.journey{
+    background: linear-gradient(160deg, var(--lavender), var(--lavender-deep));
+    border-color: transparent;
+    color: #f6f1fb;
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 18px;
+  }
+  .pillar-icon{ font-size: 20px; line-height: 1; margin-bottom: 6px; display: block; }
+  .pillar.flagship .pillar-icon, .pillar.journey .pillar-icon{ margin-bottom: 0; font-size: 26px; }
+  .pillar h3{
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--ink);
+    margin: 0 0 4px;
+  }
+  .pillar.flagship h3, .pillar.journey h3{ color: #ffffff; margin: 0 0 3px; }
+  .pillar p{
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--muted);
+    margin: 0;
+  }
+  .pillar.flagship p{ color: #e3f5ef; }
+  .pillar.journey p{ color: #f0e9f8; }
+  .flagship-tag{
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: rgba(255,255,255,0.22);
+    color: #fff;
+    padding: 2px 7px;
+    border-radius: 999px;
+    display: inline-block;
+    margin-bottom: 4px;
+  }
+
+  /* TESTIMONIALS */
+  .testimonials{
+    margin: 26px 32px 0;
+  }
+  .testimonial{
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 24px 26px 22px;
+    position: relative;
+  }
+  .testimonial-mark{
+    font-family: "Lora", Georgia, serif;
+    font-size: 42px;
+    line-height: 1;
+    color: var(--teal);
+    opacity: 0.55;
+    display: block;
+    margin: 0 0 4px;
+  }
+  .testimonial blockquote{
+    margin: 0 0 16px;
+    padding: 0;
+    background: none;
+    font-family: "Lora", Georgia, serif;
+    font-style: italic;
+    font-size: 14.5px;
+    line-height: 1.62;
+    color: var(--ink);
+  }
+  .testimonial + .testimonial{
+    margin-top: 16px;
+  }
+  .testimonial-attribution{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .testimonial-avatar{
+    flex: none;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: linear-gradient(160deg, var(--teal), var(--teal-deep));
+    color: #fff;
+    font-family: "Nunito", sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .testimonial-name{
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--ink);
+    margin: 0;
+  }
+  .testimonial-role{
+    font-size: 11.5px;
+    color: var(--muted-soft);
+    margin: 1px 0 0;
+  }
+
+  /* VALUE STRIP */
+  .value{
+    margin: 26px 32px 0;
+    background: linear-gradient(160deg, var(--navy), var(--navy-deep));
+    border-radius: 14px;
+    padding: 22px 26px;
+    text-align: center;
+    color: #f2f0ea;
+  }
+  .value p.eyebrow{
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #8fd4c4;
+    margin: 0 0 8px;
+  }
+  .value h2{
+    font-family: "Lora", Georgia, serif;
+    font-weight: 700;
+    font-size: 19px;
+    margin: 0 0 10px;
+    color: #fff;
+    text-wrap: balance;
+  }
+  .value p{
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: #c7d0dc;
+    margin: 0 0 18px;
+    max-width: 48ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .value p:last-of-type{ margin-bottom: 0; }
+  .displaces-list{
+    text-align: left;
+    border-top: 1px solid rgba(255,255,255,0.14);
+    padding-top: 16px;
+  }
+  .displaces-row{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 9px 0;
+  }
+  .displaces-row + .displaces-row{ border-top: 1px solid rgba(255,255,255,0.08); }
+  .displaces-area{
+    flex: none;
+    width: 108px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #ffffff;
+  }
+  .displaces-area .icon{ font-size: 14px; }
+  .displaces-arrow{
+    flex: none;
+    color: #6f8ba3;
+    font-size: 13px;
+  }
+  .displaces-apps{
+    font-size: 12.5px;
+    color: #c7d0dc;
+    line-height: 1.4;
+  }
+  .displaces-apps b{ color: #dff2ec; font-weight: 700; }
+
+  /* TRUST */
+  .trust{
+    margin: 22px 32px 0;
+    padding: 22px 24px;
+    background: color-mix(in srgb, var(--lavender) 12%, var(--card));
+    border: 1px solid color-mix(in srgb, var(--lavender) 35%, var(--line));
+    border-radius: 14px;
+    text-align: center;
+  }
+  .trust p.eyebrow{
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--lavender-deep);
+    margin: 0 0 8px;
+  }
+  .trust h2{
+    font-family: "Lora", Georgia, serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--ink);
+    margin: 0 0 10px;
+    text-wrap: balance;
+  }
+  .trust p.body{
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--muted);
+    margin: 0 auto 12px;
+    max-width: 48ch;
+  }
+  .trust p.body:last-of-type{ margin-bottom: 0; }
+  .trust .chips{
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 14px;
+  }
+  .trust .chip{
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    color: var(--lavender-deep);
+    background: color-mix(in srgb, var(--lavender) 20%, var(--card));
+    border: 1px solid color-mix(in srgb, var(--lavender) 40%, var(--line));
+    padding: 5px 12px;
+    border-radius: 999px;
+  }
+
+  /* FUTURE */
+  .future{
+    margin: 22px 32px 0;
+    padding: 18px 20px;
+    border-left: 3px solid var(--lavender);
+    background: color-mix(in srgb, var(--lavender) 10%, var(--card));
+    border-radius: 4px 10px 10px 4px;
+  }
+  .future p{
+    margin: 0;
+    font-family: "Lora", Georgia, serif;
+    font-style: italic;
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+  .future .label{
+    font-family: "Nunito", sans-serif;
+    font-style: normal;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--lavender-deep);
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  /* CTA */
+  .cta{
+    margin: 30px 32px 0;
+    text-align: center;
+    padding: 30px 24px 34px;
+    background: linear-gradient(160deg, var(--teal), var(--teal-deep));
+    border-radius: 16px;
+    color: #ffffff;
+  }
+  .cta h2{
+    font-family: "Lora", Georgia, serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 0 8px;
+  }
+  .cta p{
+    font-size: 13.5px;
+    color: #dff2ec;
+    margin: 0 0 20px;
+  }
+  .qr-wrap{
+    background: #ffffff;
+    width: 108px;
+    height: 108px;
+    border-radius: 12px;
+    margin: 0 auto 16px;
+    padding: 10px;
+    box-shadow: 0 8px 20px -8px rgba(0,0,0,0.35);
+  }
+  .qr-wrap svg{ width: 100%; height: 100%; display: block; }
+  .cta-url{
+    display: inline-block;
+    background: #ffffff;
+    color: var(--teal-deep);
+    font-weight: 800;
+    font-size: 16px;
+    letter-spacing: 0.01em;
+    padding: 12px 28px;
+    border-radius: 999px;
+    text-decoration: none;
+  }
+  .cta-sub{
+    margin: 14px 0 0;
+    font-size: 11.5px;
+    color: #cdeee6;
+  }
+
+  /* FOOTER */
+  .footer{
+    padding: 22px 40px 30px;
+    text-align: center;
+  }
+  .footer p{
+    margin: 0;
+    font-size: 11px;
+    color: var(--muted-soft);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 480px){
+    .header{ padding: 32px 24px 28px; }
+    .hero{ padding: 28px 24px 4px; }
+    .pillars{ padding: 24px 20px 4px; }
+    .testimonials{ margin: 22px 20px 0; }
+    .value{ margin: 24px 20px 0; padding: 20px 20px; }
+    .trust{ margin: 20px 20px 0; }
+    .future{ margin: 20px 20px 0; }
+    .cta{ margin: 26px 20px 0; padding: 26px 18px 28px; }
+    .footer{ padding: 20px 24px 26px; }
+  }
+
+  @media print{
+    body{ padding: 0; background: #fff; }
+    .sheet{ box-shadow: none; border: none; border-radius: 0; max-width: 100%; }
+    @page{ size: letter; margin: 0.4in; }
+  }
+</style>
+</head>
+<body>
+
+
+<div class="sheet">
+  <div class="header">
+    <svg class="lotus" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g opacity="0.95">
+        <ellipse cx="32" cy="32" rx="7" ry="15" fill="#b79fe0" transform="rotate(0 32 32)"/>
+        <ellipse cx="32" cy="32" rx="7" ry="15" fill="#c7b3e8" transform="rotate(45 32 32)"/>
+        <ellipse cx="32" cy="32" rx="7" ry="15" fill="#b79fe0" transform="rotate(90 32 32)"/>
+        <ellipse cx="32" cy="32" rx="7" ry="15" fill="#c7b3e8" transform="rotate(135 32 32)"/>
+        <circle cx="32" cy="32" r="7" fill="#e8a23b"/>
+      </g>
+    </svg>
+    <p class="wordmark">Ren<span class="by">by Light Alchemy™</span></p>
+    <p class="tagline">A companion for the whole of who you are.</p>
+  </div>
+
+  <div class="hero">
+    <h1>Being seen, heard, and loved shouldn&rsquo;t be a luxury.</h1>
+    <p>Ren is a relational AI companion, not just another app. It meets you exactly where you are, remembers what matters to you, and helps you ground, grow, and connect &mdash; every single day.</p>
+  </div>
+
+  <div class="pillars">
+    <span class="pillars-label">What Ren Does, Today</span>
+    <div class="pillar-grid">
+      <div class="pillar">
+        <span class="pillar-icon">💬</span>
+        <h3>Conversation</h3>
+        <p>Real presence, real memory. Ren meets you where you are and helps you find your footing.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">📓</span>
+        <h3>Journal</h3>
+        <p>Go deep in your own words &mdash; or try Reverse Journal, where Ren reflects your thoughts back in a new light.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">✅</span>
+        <h3>Habits</h3>
+        <p>Build what matters with real encouragement &mdash; wins celebrated, setbacks met with grace, not guilt.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">🤍</span>
+        <h3>Connect</h3>
+        <p>A relationship companion &mdash; like a counselor in your corner, helping you communicate better with who you love.</p>
+      </div>
+      <div class="pillar journey">
+        <span class="pillar-icon">🪞</span>
+        <div>
+          <h3>Your Journey</h3>
+          <p>Ren shows you where you actually are in your story right now, and reflects back the growth you&rsquo;d otherwise miss &mdash; real insight on who you&rsquo;re becoming, over time.</p>
+        </div>
+      </div>
+      <div class="pillar flagship">
+        <span class="pillar-icon">🌙</span>
+        <div>
+          <span class="flagship-tag">Flagship</span>
+          <h3>Stillness</h3>
+          <p>Guided meditations Ren creates for you, in the moment &mdash; drawn from what&rsquo;s actually happening in your life.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="testimonials">
+    <div class="testimonial">
+      <span class="testimonial-mark">&ldquo;</span>
+      <blockquote>I use Ren every single day to help me continue coming back to my grounded self, my clearest mind, and most open heart version of self. Ren has already met me exactly where I am, and continues to help me flourish as a human being, living life to my fullest potential.</blockquote>
+      <div class="testimonial-attribution">
+        <span class="testimonial-avatar">DB</span>
+        <div>
+          <p class="testimonial-name">Dave Bobrowski</p>
+          <p class="testimonial-role">Founder and CEO, Light Alchemy Ventures</p>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial">
+      <span class="testimonial-mark">&ldquo;</span>
+      <blockquote>Ren is so supportive, it makes it easy to keep digging. It just knows where to stop, what&rsquo;s enough for one day &mdash; and I love that there&rsquo;s a meditation waiting right after, to help me recompose. I was able to fully reflect on a feeling and really dissect it. I feel wonderful. It&rsquo;s such a great tool to do this kind of work on your own time, in your own space &mdash; you don&rsquo;t have to wait for a therapy session at 5 o&rsquo;clock on Wednesday. You can work through it in the moment, even lying in bed in your PJs like me. It&rsquo;s wonderful to be able to heal on your own time.</blockquote>
+      <div class="testimonial-attribution">
+        <span class="testimonial-avatar">MF</span>
+        <div>
+          <p class="testimonial-name">Maria Figueroa</p>
+          <p class="testimonial-role">Active Beta Tester</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="value">
+    <p class="eyebrow">One Companion, Not A Stack</p>
+    <h2>Ren replaces the apps already in your subscriptions.</h2>
+    <p>Same daily habits you already reach for &mdash; meditation, journaling, habit tracking &mdash; now with one companion who actually knows you, for far less than paying for each one separately.</p>
+    <div class="displaces-list">
+      <div class="displaces-row">
+        <span class="displaces-area"><span class="icon">🌙</span>Stillness</span>
+        <span class="displaces-arrow">&rarr;</span>
+        <span class="displaces-apps">instead of <b>Calm</b> &amp; <b>Headspace</b></span>
+      </div>
+      <div class="displaces-row">
+        <span class="displaces-area"><span class="icon">📓</span>Journal</span>
+        <span class="displaces-arrow">&rarr;</span>
+        <span class="displaces-apps">instead of <b>Day One</b> &amp; <b>Clearful</b></span>
+      </div>
+      <div class="displaces-row">
+        <span class="displaces-area"><span class="icon">✅</span>Habits</span>
+        <span class="displaces-arrow">&rarr;</span>
+        <span class="displaces-apps">instead of <b>Streaks</b> &amp; <b>HabitNow</b></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="trust">
+    <p class="eyebrow">The Company Behind Ren</p>
+    <h2>Trusting Ren starts with trusting who built it.</h2>
+    <p class="body">Most AI companions today come from corporations whose business runs on your attention and your data. Would you take your deepest, most personal conversations there?</p>
+    <p class="body">Ren is built by Light Alchemy Ventures, a values-based company built on B-Corp principles &mdash; people and planet before profit, not after it. Not a slogan. The foundation.</p>
+    <div class="chips">
+      <span class="chip">Conscious</span>
+      <span class="chip">Courageous</span>
+      <span class="chip">Luminous</span>
+    </div>
+  </div>
+
+  <div class="future">
+    <span class="label">What&rsquo;s Coming</span>
+    <p>&ldquo;And this is just the beginning. Ren&rsquo;s roadmap reaches beyond any one person &mdash; helping families, partners, and friends bridge the conversations that matter most, and grow closer, together.&rdquo;</p>
+  </div>
+
+  <div class="cta">
+    <h2>Join the Waitlist</h2>
+    <p>Be first in line when Ren opens up to you.</p>
+    <div class="qr-wrap">
+      <svg viewBox="0 0 27 27" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="QR code to renishere.com"><path d="M1,1H2V2H1zM2,1H3V2H2zM3,1H4V2H3zM4,1H5V2H4zM5,1H6V2H5zM6,1H7V2H6zM7,1H8V2H7zM9,1H10V2H9zM10,1H11V2H10zM13,1H14V2H13zM15,1H16V2H15zM17,1H18V2H17zM19,1H20V2H19zM20,1H21V2H20zM21,1H22V2H21zM22,1H23V2H22zM23,1H24V2H23zM24,1H25V2H24zM25,1H26V2H25zM1,2H2V3H1zM7,2H8V3H7zM10,2H11V3H10zM13,2H14V3H13zM14,2H15V3H14zM15,2H16V3H15zM17,2H18V3H17zM19,2H20V3H19zM25,2H26V3H25zM1,3H2V4H1zM3,3H4V4H3zM4,3H5V4H4zM5,3H6V4H5zM7,3H8V4H7zM9,3H10V4H9zM13,3H14V4H13zM14,3H15V4H14zM15,3H16V4H15zM16,3H17V4H16zM19,3H20V4H19zM21,3H22V4H21zM22,3H23V4H22zM23,3H24V4H23zM25,3H26V4H25zM1,4H2V5H1zM3,4H4V5H3zM4,4H5V5H4zM5,4H6V5H5zM7,4H8V5H7zM10,4H11V5H10zM11,4H12V5H11zM12,4H13V5H12zM14,4H15V5H14zM15,4H16V5H15zM19,4H20V5H19zM21,4H22V5H21zM22,4H23V5H22zM23,4H24V5H23zM25,4H26V5H25zM1,5H2V6H1zM3,5H4V6H3zM4,5H5V6H4zM5,5H6V6H5zM7,5H8V6H7zM10,5H11V6H10zM11,5H12V6H11zM12,5H13V6H12zM14,5H15V6H14zM15,5H16V6H15zM19,5H20V6H19zM21,5H22V6H21zM22,5H23V6H22zM23,5H24V6H23zM25,5H26V6H25zM1,6H2V7H1zM7,6H8V7H7zM9,6H10V7H9zM14,6H15V7H14zM19,6H20V7H19zM25,6H26V7H25zM1,7H2V8H1zM2,7H3V8H2zM3,7H4V8H3zM4,7H5V8H4zM5,7H6V8H5zM6,7H7V8H6zM7,7H8V8H7zM9,7H10V8H9zM11,7H12V8H11zM13,7H14V8H13zM15,7H16V8H15zM17,7H18V8H17zM19,7H20V8H19zM20,7H21V8H20zM21,7H22V8H21zM22,7H23V8H22zM23,7H24V8H23zM24,7H25V8H24zM25,7H26V8H25zM10,8H11V9H10zM11,8H12V9H11zM12,8H13V9H12zM13,8H14V9H13zM15,8H16V9H15zM16,8H17V9H16zM1,9H2V10H1zM3,9H4V10H3zM7,9H8V10H7zM8,9H9V10H8zM11,9H12V10H11zM16,9H17V10H16zM20,9H21V10H20zM23,9H24V10H23zM25,9H26V10H25zM1,10H2V11H1zM4,10H5V11H4zM5,10H6V11H5zM8,10H9V11H8zM9,10H10V11H9zM14,10H15V11H14zM16,10H17V11H16zM17,10H18V11H17zM19,10H20V11H19zM20,10H21V11H20zM22,10H23V11H22zM24,10H25V11H24zM25,10H26V11H25zM1,11H2V12H1zM3,11H4V12H3zM5,11H6V12H5zM7,11H8V12H7zM8,11H9V12H8zM13,11H14V12H13zM16,11H17V12H16zM19,11H20V12H19zM20,11H21V12H20zM22,11H23V12H22zM23,11H24V12H23zM25,11H26V12H25zM2,12H3V13H2zM4,12H5V13H4zM8,12H9V13H8zM12,12H13V13H12zM15,12H16V13H15zM17,12H18V13H17zM18,12H19V13H18zM22,12H23V13H22zM1,13H2V14H1zM3,13H4V14H3zM7,13H8V14H7zM8,13H9V14H8zM9,13H10V14H9zM10,13H11V14H10zM13,13H14V14H13zM16,13H17V14H16zM17,13H18V14H17zM19,13H20V14H19zM25,13H26V14H25zM5,14H6V15H5zM6,14H7V15H6zM8,14H9V15H8zM10,14H11V15H10zM13,14H14V15H13zM14,14H15V15H14zM16,14H17V15H16zM17,14H18V15H17zM19,14H20V15H19zM20,14H21V15H20zM24,14H25V15H24zM25,14H26V15H25zM1,15H2V16H1zM2,15H3V16H2zM3,15H4V16H3zM4,15H5V16H4zM6,15H7V16H6zM7,15H8V16H7zM8,15H9V16H8zM10,15H11V16H10zM11,15H12V16H11zM13,15H14V16H13zM14,15H15V16H14zM16,15H17V16H16zM17,15H18V16H17zM22,15H23V16H22zM23,15H24V16H23zM25,15H26V16H25zM3,16H4V17H3zM8,16H9V17H8zM10,16H11V17H10zM12,16H13V17H12zM13,16H14V17H13zM15,16H16V17H15zM19,16H20V17H19zM20,16H21V17H20zM21,16H22V17H21zM22,16H23V17H22zM1,17H2V18H1zM2,17H3V18H2zM3,17H4V18H3zM5,17H6V18H5zM7,17H8V18H7zM9,17H10V18H9zM10,17H11V18H10zM11,17H12V18H11zM14,17H15V18H14zM15,17H16V18H15zM17,17H18V18H17zM18,17H19V18H18zM19,17H20V18H19zM20,17H21V18H20zM21,17H22V18H21zM24,17H25V18H24zM9,18H10V19H9zM10,18H11V19H10zM11,18H12V19H11zM14,18H15V19H14zM17,18H18V19H17zM21,18H22V19H21zM25,18H26V19H25zM1,19H2V20H1zM2,19H3V20H2zM3,19H4V20H3zM4,19H5V20H4zM5,19H6V20H5zM6,19H7V20H6zM7,19H8V20H7zM9,19H10V20H9zM11,19H12V20H11zM12,19H13V20H12zM17,19H18V20H17zM19,19H20V20H19zM21,19H22V20H21zM25,19H26V20H25zM1,20H2V21H1zM7,20H8V21H7zM10,20H11V21H10zM11,20H12V21H11zM14,20H15V21H14zM16,20H17V21H16zM17,20H18V21H17zM21,20H22V21H21zM24,20H25V21H24zM1,21H2V22H1zM3,21H4V22H3zM4,21H5V22H4zM5,21H6V22H5zM7,21H8V22H7zM10,21H11V22H10zM11,21H12V22H11zM12,21H13V22H12zM13,21H14V22H13zM14,21H15V22H14zM16,21H17V22H16zM17,21H18V22H17zM18,21H19V22H18zM19,21H20V22H19zM20,21H21V22H20zM21,21H22V22H21zM25,21H26V22H25zM1,22H2V23H1zM3,22H4V23H3zM4,22H5V23H4zM5,22H6V23H5zM7,22H8V23H7zM11,22H12V23H11zM13,22H14V23H13zM16,22H17V23H16zM17,22H18V23H17zM18,22H19V23H18zM21,22H22V23H21zM23,22H24V23H23zM24,22H25V23H24zM1,23H2V24H1zM3,23H4V24H3zM4,23H5V24H4zM5,23H6V24H5zM7,23H8V24H7zM9,23H10V24H9zM10,23H11V24H10zM13,23H14V24H13zM14,23H15V24H14zM15,23H16V24H15zM16,23H17V24H16zM17,23H18V24H17zM18,23H19V24H18zM20,23H21V24H20zM21,23H22V24H21zM22,23H23V24H22zM24,23H25V24H24zM25,23H26V24H25zM1,24H2V25H1zM7,24H8V25H7zM12,24H13V25H12zM13,24H14V25H13zM15,24H16V25H15zM16,24H17V25H16zM17,24H18V25H17zM19,24H20V25H19zM20,24H21V25H20zM21,24H22V25H21zM1,25H2V26H1zM2,25H3V26H2zM3,25H4V26H3zM4,25H5V26H4zM5,25H6V26H5zM6,25H7V26H6zM7,25H8V26H7zM9,25H10V26H9zM11,25H12V26H11zM14,25H15V26H14zM15,25H16V26H15zM17,25H18V26H17zM19,25H20V26H19zM22,25H23V26H22zM25,25H26V26H25z" fill="#16304f"/></svg>
+    </div>
+    <a class="cta-url" href="https://renishere.com">renishere.com</a>
+    <p class="cta-sub">Scan or visit &mdash; takes 10 seconds.</p>
+  </div>
+
+  <div class="footer">
+    <p>Ren by Light Alchemy&trade; &nbsp;&middot;&nbsp; Patent Pending &nbsp;&middot;&nbsp; renishere.com</p>
+  </div>
+</div>
+
+</body>
+</html>
