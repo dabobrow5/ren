@@ -988,6 +988,87 @@ section { padding: 6rem 0; }
     </div>
   </section>
 
+  <div class="divider reveal"></div>
+
+  <!-- ── ONE PERSON WHO ALREADY USES IT ───────────────────
+       Placed between the stats and the waitlist deliberately. The stats make the case in the
+       abstract — 1B+ people, 0 platforms delivering all seven pillars — and an abstract case is
+       exactly what a reader discounts. A named person saying it worked for her is the bridge
+       between "this sounds true" and "one of them could be me", and it lands immediately before
+       the only ask on the page.
+
+       Her closing line is the strongest sentence on this site, because it answers the objection
+       people actually hold about a wellness app: that they will download it and abandon it. It is
+       emphasised in place rather than lifted to the top — her words stay in her order, unedited,
+       including her own punctuation. A testimonial that has been rearranged is not a testimonial.
+  ───────────────────────────────────────────────────────── -->
+  <style>
+    .voice { max-width: 46rem; margin: 0 auto; padding: 0 1.5rem; }
+    .voice-label {
+      font-size: .6875rem; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--teal-light); opacity: .8; text-align: center; margin-bottom: 1.75rem;
+    }
+    .voice-card {
+      position: relative;
+      background: linear-gradient(180deg, rgba(42,125,123,0.09), rgba(42,125,123,0.03));
+      border: 1px solid rgba(74,173,171,0.22);
+      border-radius: 1.25rem;
+      padding: 2.75rem 2rem 2rem;
+    }
+    .voice-mark {
+      position: absolute; top: -0.35rem; left: 1.25rem;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 5rem; line-height: 1; color: var(--teal-light); opacity: .28;
+      pointer-events: none; user-select: none;
+    }
+    .voice-quote {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.375rem; line-height: 1.62; color: var(--text-main);
+      margin: 0 0 1.5rem; position: relative;
+    }
+    .voice-quote .land { color: var(--gold-light); }
+    .voice-by { display: flex; align-items: center; gap: .875rem; }
+    .voice-initials {
+      flex-shrink: 0; width: 2.75rem; height: 2.75rem; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(74,173,171,0.14); border: 1px solid rgba(74,173,171,0.34);
+      color: var(--teal-light); font-size: .8125rem; font-weight: 500; letter-spacing: .06em;
+    }
+    .voice-name { font-size: .9375rem; color: var(--text-main); font-weight: 500; }
+    .voice-role {
+      font-size: .75rem; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--text-muted); margin-top: .15rem;
+    }
+    @media (max-width: 640px) {
+      .voice-card { padding: 2.25rem 1.375rem 1.75rem; }
+      .voice-quote { font-size: 1.1875rem; }
+    }
+  </style>
+
+  <section class="reveal">
+    <div class="voice">
+      <div class="voice-label">From someone already using Ren</div>
+      <figure class="voice-card">
+        <span class="voice-mark" aria-hidden="true">&ldquo;</span>
+        <blockquote class="voice-quote">
+          Ren replaced the separate apps I used to juggle for journaling, meditation, and habit
+          tracking &mdash; everything lives in one place that actually understands where I&rsquo;m at.
+          On the hardest days, I had someone checking in. On the good ones, I had a place to anchor
+          my progress. <span class="land">If you&rsquo;re serious about your mental wellness, Ren
+          isn&rsquo;t another app you&rsquo;ll abandon. It&rsquo;s the one you&rsquo;ll actually
+          use.</span>
+        </blockquote>
+        <figcaption class="voice-by">
+          <span class="voice-initials" aria-hidden="true">JS</span>
+          <span>
+            <span class="voice-name">Jenn Snider</span>
+            <span class="voice-role" style="display:block;">Active Beta Tester</span>
+          </span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
   <!-- ── WAITLIST ─────────────────────────────────────────
        Placed after the stats on purpose: the page ends on "Lives Ren Is Built to Reach — ∞",
        and this is the moment to let someone say "one of them is me." Before this section the
