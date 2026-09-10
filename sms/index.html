@@ -87,7 +87,25 @@
         margin-top: 3rem; padding-top: 1.25rem; border-top: 1px solid var(--border);
         font-size: 0.82rem; color: var(--text-muted); text-align: center; line-height: 1.7;
       }
-    </style>
+  
+    .formshot { border: 1px solid #d8cfc0; border-radius: 14px; padding: 20px 20px 16px;
+      background: #fbf8f3; margin: 18px 0 6px; }
+    .fs-title { font-size: 1.12rem; margin: 0 0 6px; font-weight: 600; }
+    .fs-body { margin: 0 0 14px; color: #6a5f52; font-size: .94rem; }
+    .fs-field { border: 1px solid #d8cfc0; border-radius: 10px; padding: 11px 13px;
+      background: #fff; color: #9a8f80; font-size: 1rem; }
+    .fs-consent { display: flex; gap: 10px; align-items: flex-start; margin: 12px 0 0;
+      padding: 12px 14px; background: #f2ece2; border-radius: 12px; font-size: .86rem;
+      color: #6a5f52; line-height: 1.6; }
+    .fs-box { width: 19px; height: 19px; flex: 0 0 19px; margin-top: 1px;
+      border: 1.5px solid #a4977f; border-radius: 4px; background: #fff; }
+    .fs-note { font-size: .82rem; color: #8a7f70; margin: 9px 0 0; }
+    .fs-actions { display: flex; align-items: center; gap: 16px; margin-top: 16px; }
+    .fs-btn { display: inline-block; padding: 11px 20px; border-radius: 24px;
+      background: #cfc6b8; color: #fdfbf7; font-size: .9rem; font-weight: 600; }
+    .fs-skip { color: #8a7f70; font-size: .9rem; text-decoration: underline; }
+    .fs-caption { font-size: .78rem; color: #8a7f70; margin: 14px 0 0; line-height: 1.6; }
+  </style>
   </head>
   <body>
     <main class="page">
@@ -128,13 +146,75 @@
       <section>
         <h2>How you consent, and it is only for this</h2>
         <p>
-          Consent is given in the app, in your profile settings, by ticking a box that is
-          <strong>empty by default</strong> and stands on its own. It is
-          <strong>not bundled with signing up</strong>, not bundled with accepting any other
-          agreement, and <strong>not required to use Ren</strong>. The exact sentence you agreed to
-          is stored word for word alongside the date.
+          There is <strong>one</strong> way to opt in, and it looks the same wherever you meet it:
+          a checkbox that is <strong>empty by default</strong>, standing on its own, with the full
+          agreement written beside it. It is <strong>not bundled with signing up</strong>, not
+          bundled with accepting any other agreement, and <strong>not required to use Ren</strong>.
+          The exact sentence you agreed to is stored word for word alongside the date.
         </p>
-        <p>The sentence reads:</p>
+        <p>
+          It appears in exactly two places, and both are the same control:
+        </p>
+        <ul>
+          <li>
+            <strong>During setup</strong>, on an optional step that can be skipped with
+            &ldquo;Not now&rdquo;. You enter a mobile number and tick the box. Until <em>both</em>
+            are done, the button to continue is not available.
+          </li>
+          <li>
+            <strong>In Settings</strong>, under &ldquo;How Ren reaches you&rdquo;, at any time
+            afterwards. Same checkbox, same sentence, same default of empty.
+          </li>
+        </ul>
+        <p>
+          This is exactly what the screen looks like. Nothing is cropped, and nothing is
+          pre&#8209;ticked:
+        </p>
+
+        <!--
+          A REVIEWER MUST BE ABLE TO SEE THE FORM WITHOUT AN ACCOUNT.
+
+          Twilio rejected the campaign (30909) with: "The text messaging sign-up form cannot be
+          reviewed because it sits behind a private client login screen. Provide a public URL to the
+          form, or a hosted link to a screenshot showing the uncropped sign-up area and its
+          disclosures."
+
+          Ren is invite-only, so the real form genuinely cannot be reached without an account. This
+          reproduces it exactly: the same fields, the same checkbox unticked, the same sentence from
+          the same source constant, and the same disabled continue button. It does nothing when
+          clicked, and says so, because a working opt-in on a public page would collect numbers from
+          people who are not users.
+        -->
+        <div class="formshot" role="img"
+             aria-label="The sign-up screen inside Ren: a mobile number field, an unticked consent checkbox carrying the full agreement, and a continue button that stays unavailable until both are completed.">
+          <p class="fs-title">May I reach you now and then?</p>
+          <p class="fs-body">
+            Rarely, and only when something we&rsquo;ve talked about genuinely warrants it. A hard
+            day you told me was coming; a date that matters. Never to pull you back in.
+          </p>
+          <div class="fs-field">(555) 123-4567</div>
+          <label class="fs-consent">
+            <span class="fs-box" aria-hidden="true"></span>
+            <span>
+              Ren may text me occasionally, up to 4 messages a month and never twice in a week, and
+              only when something we&rsquo;ve talked about genuinely warrants it. I can reply STOP at
+              any time to end it, or HELP if I need support. Message and data rates may apply.
+            </span>
+          </label>
+          <p class="fs-note">I&rsquo;ll ask you to confirm this number before I ever use it.</p>
+          <div class="fs-actions">
+            <span class="fs-btn" aria-disabled="true">Yes, you can reach me</span>
+            <span class="fs-skip">Not now</span>
+          </div>
+          <p class="fs-caption">
+            A reproduction of the in&#8209;app screen, shown here because Ren is invite&#8209;only and
+            the real form cannot be reached without an account. It is not a working form and collects
+            nothing. The checkbox is unticked, as it is by default; the button is unavailable until a
+            number is entered <em>and</em> the box is ticked.
+          </p>
+        </div>
+
+        <p>Stated plainly, the sentence beside that checkbox reads:</p>
         <p>
           <em>
             &ldquo;Ren may text me occasionally, up to 4 messages a month and never twice in a week,
