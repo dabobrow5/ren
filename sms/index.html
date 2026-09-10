@@ -104,6 +104,8 @@
     .fs-btn { display: inline-block; padding: 11px 20px; border-radius: 24px;
       background: #cfc6b8; color: #fdfbf7; font-size: .9rem; font-weight: 600; }
     .fs-skip { color: #8a7f70; font-size: .9rem; text-decoration: underline; }
+    .fs-links { margin: 14px 0 0; padding: 13px 15px; background: #f2ece2; border-radius: 12px;
+      font-size: .92rem; line-height: 1.65; }
     .fs-caption { font-size: .78rem; color: #8a7f70; margin: 14px 0 0; line-height: 1.6; }
   </style>
   </head>
@@ -213,6 +215,25 @@
             number is entered <em>and</em> the box is ticked.
           </p>
         </div>
+
+        <!--
+          THE LINKS BELONG ON THE OPT-IN PAGE ITSELF, not only in a footer.
+
+          Twilio 30896: "The webpage collecting user phone numbers is missing a direct hyperlink to
+          your Terms & Conditions. Add a visible, clickable link to your company's Terms & Conditions
+          directly on the opt-in form page." The page linked to the privacy statement and never once
+          to the terms, which also drew 30882 as collateral — a reviewer cannot verify terms they
+          cannot reach.
+
+          Placed immediately under the form, where the real screen carries them, and stated as full
+          sentences rather than two bare words in a footer.
+        -->
+        <p class="fs-links">
+          By ticking that box you agree to the
+          <a href="/terms"><strong>Terms &amp; Conditions</strong></a>, and your number is handled as
+          described in the <a href="/privacy"><strong>Privacy Statement</strong></a>. Both apply to
+          this text message program.
+        </p>
 
         <p>Stated plainly, the sentence beside that checkbox reads:</p>
         <p>
