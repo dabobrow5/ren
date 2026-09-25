@@ -507,6 +507,76 @@
     .sheet{ box-shadow: none; border: none; border-radius: 0; max-width: 100%; }
     @page{ size: letter; margin: 0.4in; }
   }
+
+  /* ── Beacons ──────────────────────────────────────────────────────────────
+     NAVY, and the choice is forced. Lavender is already Your Journey and teal is
+     Stillness, so the three full-width capabilities each hold their own color
+     and none of them reads as a duplicate of another. Navy is the page's anchor
+     and was unused in the grid; gold on it is the lotus seed colour, which is
+     the one accent Ren never spends anywhere else. */
+  .pillar.beacons{
+    background: linear-gradient(160deg, var(--navy), var(--navy-deep));
+    border-color: transparent;
+    color: #eef3f9;
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 18px;
+  }
+  .pillar.beacons h3{ color: #fff; }
+  .pillar.beacons p{ color: rgba(255,255,255,0.88); }
+  .new-tag{
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: var(--gold);
+    color: #2a1c02;
+    padding: 2px 7px;
+    border-radius: 999px;
+    display: inline-block;
+    margin-bottom: 4px;
+  }
+  /* Sits directly under the Beacons card and is read as part of it. */
+  .beacon-modes{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    grid-column: 1 / -1;
+    margin-top: -2px;
+  }
+  .beacon-mode{
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--navy);
+    border-radius: 10px;
+    padding: 13px 14px;
+  }
+  .beacon-mode span{
+    font-size: 9.5px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--teal);
+    display: block;
+    margin-bottom: 3px;
+  }
+  .beacon-mode h4{
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--ink);
+    margin: 0 0 4px;
+  }
+  .beacon-mode p{
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--muted);
+    margin: 0;
+  }
+  @media (max-width: 560px){
+    .beacon-modes{ grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -570,6 +640,26 @@
           <p>Guided meditations Ren creates for you, in the moment &mdash; drawn from what&rsquo;s actually happening in your life.</p>
         </div>
       </div>
+      <div class="pillar beacons">
+        <span class="pillar-icon">✨</span>
+        <div>
+          <span class="new-tag">New</span>
+          <h3>Beacons</h3>
+          <p>A minute of your actual face, sent to someone who matters. For the distance between wanting to reach out and finding the words.</p>
+        </div>
+      </div>
+      <div class="beacon-modes">
+        <div class="beacon-mode">
+          <span>One to one</span>
+          <h4>Spark</h4>
+          <p>Up to a minute, to one person. They watch when they can, and you know it landed. No typing, no performance, no thread to keep up with.</p>
+        </div>
+        <div class="beacon-mode">
+          <span>One to many</span>
+          <h4>Ripple</h4>
+          <p>One moment into a small circle of up to six. Everyone answers in their own time, so a group stays close without anybody having to be free at once.</p>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -612,7 +702,7 @@
   <div class="value">
     <p class="eyebrow">One Companion, Not A Stack</p>
     <h2>Ren replaces the apps already in your subscriptions.</h2>
-    <p>Same daily habits you already reach for &mdash; meditation, journaling, habit tracking &mdash; now with one companion who actually knows you, for far less than paying for each one separately.</p>
+    <p>Same daily habits you already reach for &mdash; meditation, journaling, habit tracking, staying close to the people you love &mdash; now with one companion who actually knows you, for far less than paying for each one separately.</p>
     <div class="displaces-list">
       <div class="displaces-row">
         <span class="displaces-area"><span class="icon">🌙</span>Stillness</span>
@@ -628,6 +718,11 @@
         <span class="displaces-area"><span class="icon">✅</span>Habits</span>
         <span class="displaces-arrow">&rarr;</span>
         <span class="displaces-apps">instead of <b>Streaks</b> &amp; <b>HabitNow</b></span>
+      </div>
+      <div class="displaces-row">
+        <span class="displaces-area"><span class="icon">✨</span>Beacons</span>
+        <span class="displaces-arrow">&rarr;</span>
+        <span class="displaces-apps">instead of <b>Marco Polo</b></span>
       </div>
     </div>
   </div>
