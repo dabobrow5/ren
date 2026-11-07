@@ -1,1 +1,228 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="icon" type="image/svg+xml" href="https://ren-lav-prod.web.app/lotus.svg" />
+    <link rel="apple-touch-icon" href="https://ren-lav-prod.web.app/apple-touch-icon.png?v=2" />
+    <meta name="theme-color" content="#FAF7F2" />
+    <title>Support, Ren by Light Alchemy Labs</title>
+    <meta name="description" content="How to reach a person at Ren, manage your subscription, delete your account, or find help right now." />
+    <meta name="robots" content="index, follow" />
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500&family=Nunito:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* Ren's design system, the same tokens as C and F in ren-firebase.jsx.
+         This page is Ren's voice on Ren's ground, not a generic legal page. */
+      :root {
+        --bg-primary: #faf7f2;
+        --bg-surface: #f2ede3;
+        --text-primary: #1a0f08;
+        --text-secondary: #3d2a18;
+        --text-tertiary: #6b4e35;
+        --text-muted: #a08060;
+        --border: rgba(100, 75, 50, 0.18);
+        --ren: "Lora", Georgia, serif;
+        --ui: "Nunito", -apple-system, BlinkMacSystemFont, sans-serif;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        padding: 0;
+        background: var(--bg-primary);
+        color: var(--text-secondary);
+        font-family: var(--ui);
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+
+      .page {
+        max-width: 40rem; /* ~65 characters of body text */
+        margin: 0 auto;
+        padding: 4rem 1.5rem 5rem;
+      }
+
+      .mark {
+        display: block;
+        width: 3.25rem;
+        height: 3.25rem;
+        margin: 0 auto 1.75rem;
+      }
+
+      h1 {
+        font-family: var(--ren);
+        font-weight: 400;
+        font-size: clamp(2rem, 6vw, 2.75rem);
+        line-height: 1.15;
+        color: var(--text-primary);
+        text-align: center;
+        text-wrap: balance;
+        margin: 0 0 0.5rem;
+      }
+
+      .subtitle {
+        font-family: var(--ren);
+        font-style: italic;
+        font-size: 1.0625rem;
+        color: var(--text-tertiary);
+        text-align: center;
+        margin: 0 0 3rem;
+      }
+
+      .statement p {
+        font-size: 1rem;
+        line-height: 1.8;
+        margin: 0 0 1.5rem;
+      }
+
+      /* The opening line and the closing line are the statement's spine ,
+         everything between them is the explanation. Set them in Ren's voice. */
+      .statement p:first-child,
+      .statement p:last-child {
+        font-family: var(--ren);
+        font-size: 1.25rem;
+        line-height: 1.6;
+        color: var(--text-primary);
+      }
+
+      .rule {
+        border: 0;
+        border-top: 0.5px solid var(--border);
+        margin: 3rem 0;
+      }
+
+      h2 {
+        font-family: var(--ren);
+        font-weight: 400;
+        font-size: 1.375rem;
+        color: var(--text-primary);
+        margin: 0 0 0.875rem;
+      }
+
+      section { margin-bottom: 2.5rem; }
+
+      section p {
+        font-size: 0.9375rem;
+        line-height: 1.75;
+        margin: 0 0 0.875rem;
+      }
+
+      ul {
+        margin: 0 0 0.875rem;
+        padding-left: 1.125rem;
+      }
+
+      li {
+        font-size: 0.9375rem;
+        line-height: 1.75;
+        margin-bottom: 0.5rem;
+      }
+
+      a {
+        color: var(--text-tertiary);
+        text-decoration-thickness: 0.5px;
+        text-underline-offset: 0.2em;
+      }
+
+      a:hover { color: var(--text-primary); }
+
+      a:focus-visible {
+        outline: 2px solid var(--text-tertiary);
+        outline-offset: 3px;
+        border-radius: 2px;
+      }
+
+      footer {
+        margin-top: 4rem;
+        padding-top: 1.5rem;
+        border-top: 0.5px solid var(--border);
+        text-align: center;
+        font-size: 0.8125rem;
+        line-height: 1.7;
+        color: var(--text-muted);
+      }
+
+      /* Ren's palette is a deliberate single visual world, a warm, lit ground.
+         It does not invert into a dark theme; it would stop being Ren's. The
+         page simply keeps its own light, which is the point of it. */
+      @media (prefers-color-scheme: dark) {
+        :root { color-scheme: light; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <img class="mark" src="https://ren-lav-prod.web.app/lotus.svg" alt="" />
+
+      <h1>Support</h1>
+      <p class="subtitle">How to reach a person at Ren, and how to do the common things yourself.</p>
+      <section>
+        <h2>If you need help right now</h2>
+        <p>
+          Ren is an AI companion, not a crisis service. If you are in danger or thinking about
+          hurting yourself, call or text <strong>988</strong> (Suicide &amp; Crisis Lifeline, US) or
+          call <strong>911</strong>.
+        </p>
+      </section>
+
+      <section>
+        <h2>Write to us</h2>
+        <p>
+          <a href="mailto:support@lightalchemylabs.com">support@lightalchemylabs.com</a>. A person
+          reads every message and answers within five business days. Inside the app, You &rsaquo;
+          Settings also has a way to report a problem.
+        </p>
+      </section>
+
+      <section>
+        <h2>Your subscription</h2>
+        <p>
+          Ren is billed through Apple. To change or cancel, open <strong>Settings</strong> on your
+          iPhone or iPad, tap your name, then <strong>Subscriptions</strong>, then Ren. Cancel at
+          least 24 hours before the period ends to avoid the next charge. Refunds are handled by
+          Apple at <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>. To restore
+          a purchase on a new device, tap Restore Purchases on Ren's subscription screen.
+        </p>
+      </section>
+
+      <section>
+        <h2>Deleting your account</h2>
+        <p>
+          In the app, open You &rsaquo; Settings &rsaquo; Delete my account. This removes your
+          account and what Ren holds about you, as described in the
+          <a href="/privacy">privacy statement</a>. Deleting the app alone does not delete your
+          account, and deleting your account does not cancel an Apple subscription; cancel it in
+          Settings as above.
+        </p>
+      </section>
+
+      <section>
+        <h2>Something someone sent you</h2>
+        <p>
+          On any Spark or Ripple you received, tap Report. You can also block a person from their
+          page in Connect. Reports reach Ren's team, who review them within a day.
+        </p>
+      </section>
+
+      <section>
+        <h2>The fine print</h2>
+        <p>
+          <a href="/terms">Terms of use</a> &middot; <a href="/privacy">Privacy statement</a>
+          &middot; <a href="https://www.renishere.com">renishere.com</a>
+        </p>
+      </section>
+
+      <footer>
+        &copy; 2026 Light Alchemy Ventures LLC, trading as Light Alchemy Labs &middot; All Rights Reserved &middot; Patent Pending
+      </footer>
+    </main>
+  </body>
+</html>
