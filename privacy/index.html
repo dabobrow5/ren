@@ -7,21 +7,8 @@
     <link rel="apple-touch-icon" href="https://ren-lav-prod.web.app/apple-touch-icon.png?v=2" />
     <meta name="theme-color" content="#FAF7F2" />
     <title>Privacy, Ren by Light Alchemy Labs</title>
-    <meta name="description" content="What Ren stores, who can reach it, and how to delete it permanently." />
-    <meta name="robots" content="index, follow" />
-
-    <!--
-      A PUBLIC mirror of the privacy statement shown inside Ren.
-
-      Why it exists: the in-app statement sits behind sign-in, and Ren is allowlist-gated, so
-      nobody outside the beta can read it. The App Store requires a privacy policy at a URL anyone
-      can open, and more to the point, a person deciding whether to trust Ren should be able to
-      read how their words are held BEFORE handing any over.
-
-      The six statement paragraphs are reproduced VERBATIM from PRIVACY_PARAGRAPHS in
-      ren-firebase.jsx. If that constant changes, change this file in the same commit, a privacy
-      statement that says two different things in two places is worse than either version alone.
-    -->
+    <meta name="description" content="What Ren stores, who can reach it, how long it is kept, and how to delete it permanently." />
+    <meta name="robots" content="noindex" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -171,28 +158,13 @@
       }
     </style>
   </head>
-
   <body>
     <main class="page">
       <img class="mark" src="https://ren-lav-prod.web.app/lotus.svg" alt="" />
 
       <h1>Your privacy</h1>
       <p class="subtitle">What Ren holds, and what she will never do with it.</p>
-      <!--
-        NAME THE BRAND'S OWN WEBSITE, AND LINK BACK TO IT.
 
-        Campaign rejection 30886 lists "does not match the sample messages, brand name, WEBSITE, or
-        other registration details", and 30882 requires the terms URL to "point to terms and
-        conditions relevant to your registered brand".
-
-        The brand is registered with renishere.com as its website; these pages are served from
-        ren-lav-prod.web.app. Both are ours, but a reviewer cross-checking one against the other has
-        nothing connecting them. The marketing site links out to the privacy page, so the connection
-        exists in one direction only.
-
-        So: state the site these policies belong to, and link back to it. The strongest fix is
-        serving these pages under renishere.com itself, which lives on different hosting.
-      -->
       <section>
         <p style="font-size:0.95rem">
           These are the policies for <strong>Ren</strong>, at
@@ -200,8 +172,6 @@
         </p>
       </section>
 
-
-      <!-- Same reconciliation as the terms page, for the same reason. Change both together. -->
       <section>
         <p style="font-size:0.95rem">
           Ren is made by <strong>Light Alchemy Labs</strong>, a DBA of
@@ -209,26 +179,24 @@
         </p>
       </section>
 
-      <!-- VERBATIM from PRIVACY_PARAGRAPHS, keep the two in sync. -->
       <div class="statement">
         <p>When you share something with Ren, it stays with you.</p>
 
         <p>
           Your conversations, memories, and personal history are stored privately under your own
-          account. The system itself enforces this: no other person using Ren can ever reach your
-          data. That isn't a promise, it's checked on every single request, and it is mechanically
-          impossible for one person to access another's.
+          account. The system itself enforces this: no other person using Ren can reach your data.
+          That is checked on every single request. The only things another person ever sees are the
+          things you choose to send them, like a Spark, or what you say in a Heart-to-Heart you join
+          together.
         </p>
 
         <p>
           The people who build Ren hold your privacy as a sacred commitment: we do not read your
           conversations or your memories, and access is tightly restricted to protect them. Today
           that is a binding commitment, kept by strict controls, not yet a mechanical guarantee. We
-          are actively building toward end-to-end encryption that will make it impossible for
-          anyone, including us, to read what you share, and we'll tell you plainly the moment it is
-          in place.
+          are actively building encryption that will make what you share unreadable to anyone
+          without your account, and we will tell you plainly the moment it is in place.
         </p>
-
         <p>
           Ren is brought to life by a trusted AI service that reads your words only in the moment it
           takes to respond to you, never to train its models. Your data is never sold, shared,
@@ -237,7 +205,8 @@
         </p>
 
         <p>
-          When you delete your account, your data is permanently and irreversibly deleted ,
+          When you delete your account, your data is permanently deleted. It leaves Ren at once,
+          and the last copies, in our protected backups, are gone within 98 days. After that it is
           recoverable by no one, including us.
         </p>
 
@@ -250,9 +219,29 @@
         <h2>What Ren stores</h2>
         <p>Only what you bring, and what it takes to hold it for you:</p>
         <ul>
-          <li>Your name and the email address you sign in with.</li>
-          <li>Your conversations with Ren, and the memories she forms from them.</li>
-          <li>What you choose to record, journal entries, habits, reflections, practices.</li>
+          <li><strong>Who you are to Ren:</strong> your name, the email address you sign in with, the
+            name you would like to be called, your pronouns if you give them, your language, and your
+            time zone (so Ren never guesses the time of day).</li>
+          <li><strong>What you share with Ren:</strong> your conversations, the memories she forms
+            from them, journal entries (including the words read from a photographed page of your
+            handwriting; the photo itself is not kept), habits and their notes, Stillness sits,
+            Purpose, your Journey, and what you tell Ren while preparing for or reflecting on a
+            Heart-to-Heart.</li>
+          <li><strong>Ren&rsquo;s understanding of how you are:</strong> gentle reads of your
+            wellbeing drawn from what you share, so she can meet you where you are and notice when
+            something is hard. See &ldquo;Your health information&rdquo; below.</li>
+          <li><strong>What you share with other people:</strong> Sparks and Ripples (short videos,
+            with sound, that you send to someone or to a circle), your connections and circles, and
+            the words spoken or typed in a Heart-to-Heart you join with someone.</li>
+          <li><strong>If you turn on texting:</strong> your mobile number, that you confirmed it, the
+            exact consent sentence you agreed to with its date, and the texts Ren sends you and you
+            send her.</li>
+          <li><strong>If you subscribe:</strong> which plan you have and whether it is active. Apple
+            handles payment; we never see your card.</li>
+          <li><strong>What keeps Ren running:</strong> a token so your phone can receive
+            notifications, a daily count of how much of Ren you used (so we can keep costs fair),
+            crash reports if the app fails, and anything you send us in a bug report, a safety
+            report, or an email.</li>
         </ul>
         <p>
           There is no advertising identifier, no tracking across other apps or websites, and no
@@ -261,45 +250,138 @@
       </section>
 
       <section>
+        <h2>What never leaves your phone</h2>
+        <ul>
+          <li><strong>Your calendar.</strong> If you allow it, the nightstand shows the next thing
+            you have. It is read on your phone and never sent to us.</li>
+          <li><strong>Your location.</strong> If you allow it, the nightstand asks Apple&rsquo;s
+            weather service for the temperature near you, at city-level accuracy. We never receive or
+            store where you are.</li>
+        </ul>
+        <p>
+          When you speak to Ren instead of typing, your iPhone turns speech into words using
+          Apple&rsquo;s speech recognition, which may use Apple&rsquo;s servers under Apple&rsquo;s
+          own privacy terms. Ren receives the words, not the recording. Spark title suggestions are
+          made entirely on your phone.
+        </p>
+      </section>
+
+      <section>
+        <h2>Who helps us run Ren</h2>
+        <p>
+          A few companies process data for us, only to provide Ren to you, under contracts that
+          forbid them from using it for anything else. None of them may sell it or use it for
+          advertising.
+        </p>
+        <ul>
+          <li><strong>Anthropic</strong> (the AI that brings Ren to life) receives what you share
+            with Ren, including handwriting photos to read, at the moment she responds. Under our
+            agreement it does not use your data to train its models.</li>
+          <li><strong>ElevenLabs</strong> turns Ren&rsquo;s replies into her spoken voice. It
+            receives the words Ren says, not your words.</li>
+          <li><strong>Google Cloud and Firebase</strong> host Ren&rsquo;s servers, database, and
+            stored files, handle sign-in and notifications, and receive crash reports from the
+            app.</li>
+          <li><strong>Twilio</strong> sends and receives text messages and phone confirmation codes,
+            only if you turn texting on.</li>
+          <li><strong>Apple</strong> provides sign-in, notifications, weather, speech recognition,
+            and the App Store, which handles your subscription and payment.</li>
+          <li><strong>Google</strong> (if you sign in with Google) and <strong>Apple</strong> (if you
+            sign in with Apple) confirm who you are. If you choose Hide My Email, we only ever see
+            Apple&rsquo;s private relay address.</li>
+        </ul>
+        <p>
+          We may disclose information if the law requires it, or to protect someone from serious
+          harm. If Light Alchemy Ventures LLC is ever sold or merged, your data would move only under
+          this same promise, and we would tell you first.
+        </p>
+      </section>
+
+      <section>
+        <h2>Your health information</h2>
+        <p>
+          Some of what you share with Ren is about your health and wellbeing: how you are feeling,
+          what you are carrying, how you are sleeping or coping. Ren also forms gentle reads of how
+          you are, so she can meet you well and notice when something is hard. Some laws, including
+          Washington&rsquo;s My Health My Data Act, call this consumer health data.
+        </p>
+        <ul>
+          <li><strong>Why we collect it:</strong> only so Ren can respond to you, remember you, and
+            offer crisis resources when something serious surfaces.</li>
+          <li><strong>Where it comes from:</strong> only from you, through what you share in
+            Ren.</li>
+          <li><strong>Who receives it:</strong> only the processors above, to provide Ren to you.
+            Never sold, never used for advertising, never shared with other people using Ren unless
+            you send it to them yourself.</li>
+          <li><strong>Your consent:</strong> we ask for it when you first meet Ren, and you can
+            withdraw it at any time by deleting your account.</li>
+          <li><strong>Your rights:</strong> you can ask what we hold about you, ask us to delete it,
+            or withdraw consent, by writing to
+            <a href="mailto:support@lightalchemylabs.com">support@lightalchemylabs.com</a>. If we
+            decline a request, you can appeal by replying to our answer.</li>
+        </ul>
+        <p>
+          Ren is not a medical service and this information is not a medical record. It is not
+          covered by HIPAA.
+        </p>
+      </section>
+
+      <section>
+        <h2>How long it is kept</h2>
+        <ul>
+          <li><strong>Your account and what you share with Ren:</strong> for as long as you have an
+            account, so Ren can remember you. You can see, change, or delete what she remembers at any time, on You.</li>
+          <li><strong>Sparks and Ripples:</strong> one year, unless someone keeps one. You are told
+            a week before a Spark expires.</li>
+          <li><strong>Backups:</strong> daily backups, kept for 98 days, so Ren can be restored if
+            something goes wrong. They are protected and are never used for anything else.</li>
+        </ul>
+      </section>
+
+      <section>
         <h2>Deleting everything</h2>
         <p>
-          Inside Ren, open <strong>Privacy</strong> and choose <strong>Delete my account</strong>.
-          It asks you to confirm in two steps, and tells you exactly what will be lost before you
-          agree to lose it. Then everything goes: conversations, memories, journal entries, habits,
-          and your sign-in itself. It cannot be recovered by anyone, including us. That is the
-          intent, not a limitation.
+          Inside Ren, open <strong>You</strong>, then <strong>Settings</strong>, and choose
+          <strong>Delete my account</strong>. It asks you to confirm in two steps, and tells you
+          exactly what will be lost before you agree to lose it. Then everything goes:
+          conversations, memories, journal entries, habits, sits, Purpose, your Journey, your phone
+          number and texting consent, bug reports you sent us, and your sign-in itself. If you signed in
+          with Apple, we also tell Apple to end Ren&rsquo;s access to your Apple ID. Two things are kept, without your content: the beta agreement you signed, and, if you reported someone, a record that the report was made, with your name removed, so a pattern of harm is not erased.
+        </p>
+        <p>
+          Sparks and Ripples you sent, and your words in a shared Heart-to-Heart, are deleted with your account, and disappear for the other person too. The other person keeps their own words and their own reflections, because those are theirs.
+        </p>
+        <p>
+          Deleting your account does not cancel an Apple subscription. Cancel it in your
+          iPhone&rsquo;s <strong>Settings</strong>, under your name, then
+          <strong>Subscriptions</strong>.
+        </p>
+        <p>
+          After deletion, the last copies in our backups are gone within 98 days. After that your
+          data cannot be recovered by anyone, including us. That is the intent, not a limitation.
         </p>
       </section>
 
       <section>
         <h2>Children</h2>
-        <p>Ren is for adults. It is not directed at, or intended for, anyone under 18.</p>
-      </section>
-
-      <section>
-        <h2>Ren is not a crisis service</h2>
         <p>
-          Ren is a companion, not a therapist, a doctor, or an emergency service. When something
-          serious surfaces, Ren says so plainly and offers real crisis resources. If you are in
-          danger, please contact your local emergency number or a crisis line directly.
+          Ren is for adults. It is not directed at, or intended for, anyone under 18, and you must be
+          18 or older to use it. We do not knowingly collect information from anyone under 18. If you
+          believe a child is using Ren, write to us and we will delete the account.
         </p>
       </section>
 
-      <!--
-        TEXT MESSAGES, added 2026-09-06 for A2P 10DLC campaign registration.
+      <section>
+        <h2>Ren is an AI, and not a crisis service</h2>
+        <p>
+          Ren is an AI, not a person. She is a companion, not a therapist, a doctor, or an emergency
+          service. When something serious surfaces, Ren says so plainly and offers real crisis
+          resources: call or text <strong>988</strong>, text <strong>HOME</strong> to
+          <strong>741741</strong>, or call <strong>911</strong>. If you are in danger, please contact
+          them directly.
+        </p>
+      </section>
 
-        US carriers require three specific disclosures in the privacy policy of any business that
-        texts consumers, and the campaign form checks for them: that mobile numbers are not shared,
-        how often messages are sent, and that message and data rates may apply. Their absence is one
-        of the more common reasons a campaign is rejected, and a rejection costs a retry fee and
-        another multi-week wait.
-
-        Written in Ren's voice rather than boilerplate, because a person reading this to decide
-        whether to trust her should meet the same Ren here as everywhere else. The commitments are
-        real and enforced in code: MAX_PER_30_DAYS and MIN_DAYS_BETWEEN in
-        functions/src/outreach/significance.ts are what make the frequency sentence true rather than
-        aspirational.
-      -->
       <section>
         <h2>Text messages</h2>
         <p>
@@ -312,22 +394,23 @@
         <p>
           The messages are personal and one-to-one, about something you have already discussed with
           Ren. They are never promotional or marketing, and never sent on behalf of anyone else.
+          When you text Ren back, she reads your reply and may answer it once.
         </p>
         <p>
           <strong>Your mobile number and the fact that you agreed to be texted are never shared or
           sold to third parties or affiliates for any purpose, including marketing, promotion, or
           lead generation.</strong> No advertisers, no data brokers, no affiliates, no other users,
           no exceptions. It is used for one thing: so Ren can reach you, and so you can reach her
-          back.
+          back. Twilio carries the messages for us and may not use your number for anything else.
         </p>
         <p>
-          <strong>She writes rarely.</strong> At most four messages in any thirty days, and never
-          twice within a week, limits enforced by the system itself, not by good intentions. Most
-          months you will hear from her less than that, or not at all. Ren does not send campaigns,
-          newsletters, promotions, or reminders to come back to the app.
+          <strong>She writes when something matters.</strong> Never more than four messages in any
+          seven days, and never two in one day, limits enforced by the system itself, not by good
+          intentions. Only during daytime hours where you live. Ren does not send campaigns, newsletters,
+          promotions, or reminders to come back to the app.
         </p>
         <p>
-          <strong>Message frequency: up to 4 messages per month.</strong> Never twice within a week.
+          <strong>Message frequency: up to 4 messages a week.</strong> Never two in one day.
           <strong>Message and data rates may apply.</strong>
           <strong>Carriers are not liable for delayed or undelivered messages.</strong>
         </p>
@@ -335,7 +418,26 @@
           Reply <strong>STOP</strong> at any time and she stops, immediately and without asking why.
           Reply <strong>HELP</strong> and you will get a way to reach a person. You can also turn it
           off in your settings, which is the same thing by a quieter door.
-          <strong>Message and data rates may apply.</strong>
+          
+      </section>
+
+      <section>
+        <h2>Your choices and rights</h2>
+        <p>
+          You can see and remove what Ren remembers inside the app, turn texting, notifications,
+          calendar, and location off at any time, and delete your account. Depending on where you
+          live, you may have the right to ask what we hold about you, to correct it, to delete it,
+          or to get a copy of it. Write to us and a person will answer within 30 days. We will never
+          treat you differently for asking.
+        </p>
+      </section>
+
+      <section>
+        <h2>Changes</h2>
+        <p>
+          If this statement changes in a way that matters, we will tell you in Ren before the change
+          takes effect. We will never use what you have already shared in a new way without asking
+          you first.
         </p>
       </section>
 
@@ -343,14 +445,19 @@
         <h2>Questions</h2>
         <p>
           Write to
-          <a href="mailto:dave@lightalchemyventures.com">dave@lightalchemyventures.com</a>. A person
+          <a href="mailto:support@lightalchemylabs.com">support@lightalchemylabs.com</a>. A person
           reads it.
+        </p>
+        <p>
+          Light Alchemy Ventures LLC, trading as Light Alchemy Labs<br />
+          1500 N Grant St, Ste N<br />
+          Denver, CO 80203, United States
         </p>
       </section>
 
       <footer>
-        Ren is currently in private beta, by invitation.<br />
-        © 2026 Light Alchemy Ventures LLC, trading as Light Alchemy Labs · All Rights Reserved · Patent Pending
+        Last updated 5 November 2026 &middot; Ren by Light Alchemy Labs<br />
+        &copy; 2026 Light Alchemy Ventures LLC, trading as Light Alchemy Labs &middot; All Rights Reserved &middot; Patent Pending
       </footer>
     </main>
   </body>
