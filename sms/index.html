@@ -10,30 +10,6 @@
     <meta name="description" content="The Ren Personal Check-ins SMS program: who sends, who receives, how often, and how to stop." />
     <meta name="robots" content="index, follow" />
 
-    <!--
-      A PAGE FOR ONE PROGRAM, AND NOTHING ELSE.
-
-      Rejected 30882 three times. The first time section 5 of the general terms was a one-line
-      pointer. The second time it was complete. The third time it was complete, carried all six
-      required disclosures, named both entities and linked the brand's website, and was rejected
-      again with no new information.
-
-      Re-reading Twilio's own list of causes rather than adding more prose: "Your campaign does not
-      show direct, campaign-specific consumer consent. For A2P 10DLC, consent cannot be obscured in
-      general terms and conditions or bundled into another agreement."
-
-      That is the literal description of what we were doing. The messaging consent lived as a section
-      INSIDE a general terms document covering accounts, ownership, liability and governing law. No
-      amount of detail in that section fixes it, because the problem is the container.
-
-      So: this page is the messaging program, alone. It is the URL the campaign submits. The general
-      terms still exist at /terms and still describe the agreement; they simply are not what a
-      carrier reviewer is asked to read.
-
-      DO NOT add account terms, liability or IP language to this page. That would recreate the exact
-      fault it exists to correct.
-    -->
-
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -119,7 +95,7 @@
       <div class="key">
         <p><strong>Program:</strong> Ren Personal Check-ins</p>
         <p><strong>Sender:</strong> Light Alchemy Labs, a DBA of Light Alchemy Ventures LLC, at <a href="https://www.renishere.com">renishere.com</a></p>
-        <p><strong>Message frequency:</strong> up to 4 messages per month</p>
+        <p><strong>Message frequency:</strong> up to 4 messages a week, never two in one day</p>
         <p><strong>Message and data rates may apply.</strong></p>
         <p><strong>To stop:</strong> reply STOP. <strong>For help:</strong> reply HELP, or email <a href="mailto:dave@lightalchemyventures.com">dave@lightalchemyventures.com</a></p>
         <p><strong>Carriers are not liable for delayed or undelivered messages.</strong></p>
@@ -173,20 +149,6 @@
           pre&#8209;ticked:
         </p>
 
-        <!--
-          A REVIEWER MUST BE ABLE TO SEE THE FORM WITHOUT AN ACCOUNT.
-
-          Twilio rejected the campaign (30909) with: "The text messaging sign-up form cannot be
-          reviewed because it sits behind a private client login screen. Provide a public URL to the
-          form, or a hosted link to a screenshot showing the uncropped sign-up area and its
-          disclosures."
-
-          Ren is invite-only, so the real form genuinely cannot be reached without an account. This
-          reproduces it exactly: the same fields, the same checkbox unticked, the same sentence from
-          the same source constant, and the same disabled continue button. It does nothing when
-          clicked, and says so, because a working opt-in on a public page would collect numbers from
-          people who are not users.
-        -->
         <div class="formshot" role="img"
              aria-label="The sign-up screen inside Ren: a mobile number field, an unticked consent checkbox carrying the full agreement, and a continue button that stays unavailable until both are completed.">
           <p class="fs-title">May I reach you now and then?</p>
@@ -198,7 +160,7 @@
           <label class="fs-consent">
             <span class="fs-box" aria-hidden="true"></span>
             <span>
-              Ren may text me occasionally, up to 4 messages a month and never twice in a week, and
+              Ren may text me occasionally, up to 4 messages a week and never twice in a day, and
               only when something we&rsquo;ve talked about genuinely warrants it. I can reply STOP at
               any time to end it, or HELP if I need support. Message and data rates may apply.
             </span>
@@ -216,18 +178,6 @@
           </p>
         </div>
 
-        <!--
-          THE LINKS BELONG ON THE OPT-IN PAGE ITSELF, not only in a footer.
-
-          Twilio 30896: "The webpage collecting user phone numbers is missing a direct hyperlink to
-          your Terms & Conditions. Add a visible, clickable link to your company's Terms & Conditions
-          directly on the opt-in form page." The page linked to the privacy statement and never once
-          to the terms, which also drew 30882 as collateral — a reviewer cannot verify terms they
-          cannot reach.
-
-          Placed immediately under the form, where the real screen carries them, and stated as full
-          sentences rather than two bare words in a footer.
-        -->
         <p class="fs-links">
           By ticking that box you agree to the
           <a href="/terms"><strong>Terms &amp; Conditions</strong></a>, and your number is handled as
@@ -238,7 +188,7 @@
         <p>Stated plainly, the sentence beside that checkbox reads:</p>
         <p>
           <em>
-            &ldquo;Ren may text me occasionally, up to 4 messages a month and never twice in a week,
+            &ldquo;Ren may text me occasionally, up to 4 messages a week and never twice in a day,
             and only when something we&rsquo;ve talked about genuinely warrants it. I can reply STOP at
             any time to end it, or HELP if I need support. Message and data rates may apply.&rdquo;
           </em>
@@ -258,8 +208,8 @@
       <section>
         <h2>How often</h2>
         <p>
-          <strong>Up to 4 messages per month</strong>, and never twice within a week. Most months,
-          fewer or none. These limits are enforced by the system itself.
+          <strong>Up to 4 messages a week</strong>, and never two in one day. Most weeks,
+          fewer. These limits are enforced by the system itself.
         </p>
       </section>
 
