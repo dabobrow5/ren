@@ -333,4 +333,4 @@ article.read .note{margin-top:28px;padding-top:16px;border-top:1px solid var(--l
 .fullquote summary::-webkit-details-marker{display:none}
 .fullquote summary::after{content:"";width:6px;height:6px;margin-left:8px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-2px)}
 .fullquote[open] summary::after{transform:rotate(-135deg) translateY(-2px)}
-.fullquote p{font:italic 400 17px/1.7 Lora,serif;margin:12px 0 0}
+.fullquote p{font:italic 400 17px/1.7 Lora,serif;margin:12px 0 0;padding:20px 24px;border-radius:14px;background:rgba(34,24,36,.72);color:#FFF7EC}
