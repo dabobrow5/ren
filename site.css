@@ -326,3 +326,11 @@ article.read .note{margin-top:28px;padding-top:16px;border-top:1px solid var(--l
 .numbers table{width:100%;border-collapse:collapse;margin-top:8px}.numbers th,.numbers td{text-align:right;padding:6px 4px;border-bottom:1px solid var(--line-day)}.numbers th:first-child,.numbers td:first-child{text-align:left}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 .cmp .fine{font:400 13px/1.6 Nunito,sans-serif;color:var(--ink3);margin-top:18px}
+
+/* A testimonial's full words, folded under its strongest line (Connect, Tim, 26 Nov 2026). */
+.fullquote{max-width:680px;margin:22px auto 0;text-align:left}
+.fullquote summary{cursor:pointer;list-style:none;text-align:center;font:600 14px Nunito,sans-serif;letter-spacing:.04em;color:inherit;opacity:.85;min-height:44px;display:flex;align-items:center;justify-content:center}
+.fullquote summary::-webkit-details-marker{display:none}
+.fullquote summary::after{content:"";width:6px;height:6px;margin-left:8px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-2px)}
+.fullquote[open] summary::after{transform:rotate(-135deg) translateY(-2px)}
+.fullquote p{font:italic 400 17px/1.7 Lora,serif;margin:12px 0 0}
